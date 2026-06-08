@@ -9,20 +9,17 @@
 #define QUESTION_FILE "questions.txt"
 #define HIGHSCORE_FILE "highscore.txt"
 
-// Structure for Question
 struct Question {
     char question[MAX_LENGTH];
     char options[MAX_OPTIONS][MAX_LENGTH];
-    char answer;          // 'A', 'B', 'C', or 'D'
-    int difficulty;       // 1 = Easy, 2 = Medium, 3 = Hard
+    char answer;
+    int difficulty;
 };
 
-// Global variables
 struct Question questionBank[MAX_QUESTIONS];
 int totalQuestions = 0;
 int highScore = 0;
 
-// Function prototypes
 void loadQuestions();
 int selectDifficulty();
 void askQuestion(struct Question q, int *score, int questionNum);
@@ -42,7 +39,6 @@ int main() {
     printf("       QUIZ GAME WITH QUESTION BANK\n");
     printf("============================================\n\n");
 
-    // Create sample question file if it doesn't exist
     FILE *check = fopen(QUESTION_FILE, "r");
     if (check == NULL) {
         printf("Question file not found. Creating sample questions...\n\n");
@@ -51,7 +47,6 @@ int main() {
         fclose(check);
     }
 
-    // Load questions from file
     loadQuestions();
     loadHighScore();
 
@@ -71,14 +66,13 @@ int main() {
         printf("============================================\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
-        getchar(); // consume newline
+        getchar();
 
         switch (choice) {
             case 1: {
                 int difficulty = selectDifficulty();
                 if (difficulty == 0) break;
 
-                // Filter questions by difficulty
                 struct Question filteredQuestions[MAX_QUESTIONS];
                 int filteredCount = 0;
 
@@ -93,10 +87,8 @@ int main() {
                     break;
                 }
 
-                // Shuffle questions (randomize)
                 shuffleQuestions(filteredQuestions, filteredCount);
 
-                // Determine number of questions to ask
                 int numQuestions;
                 printf("\nAvailable questions for this level: %d\n", filteredCount);
                 printf("How many questions would you like? (1-%d): ", filteredCount);
@@ -107,7 +99,6 @@ int main() {
                     numQuestions = filteredCount;
                 }
 
-                // Start the quiz
                 int correct = 0;
                 printf("\n============================================\n");
                 printf("         QUIZ STARTING! GOOD LUCK!\n");
@@ -117,11 +108,9 @@ int main() {
                     askQuestion(filteredQuestions[i], &correct, i + 1);
                 }
 
-                // Calculate and show results
                 int score = calculateScore(correct, numQuestions, difficulty);
                 showResult(score, correct, numQuestions, difficulty);
 
-                // Save high score if applicable
                 if (score > highScore) {
                     printf("\n*** NEW HIGH SCORE! ***\n");
                     saveHighScore(score);
@@ -157,7 +146,6 @@ int main() {
     return 0;
 }
 
-// Load questions from file
 void loadQuestions() {
     FILE *fp = fopen(QUESTION_FILE, "r");
     if (fp == NULL) {
@@ -169,13 +157,10 @@ void loadQuestions() {
     char line[MAX_LENGTH];
 
     while (fgets(line, MAX_LENGTH, fp) != NULL && totalQuestions < MAX_QUESTIONS) {
-        // Remove newline
         line[strcspn(line, "\n")] = '\0';
 
-        // Skip empty lines
         if (strlen(line) == 0) continue;
 
-        // Format: question|optionA|optionB|optionC|optionD|answer|difficulty
         char *token;
         struct Question q;
 
@@ -197,7 +182,6 @@ void loadQuestions() {
         if (token == NULL) continue;
         q.difficulty = atoi(token);
 
-        // Validate difficulty
         if (q.difficulty < 1 || q.difficulty > 3) {
             q.difficulty = 1;
         }
@@ -209,7 +193,6 @@ void loadQuestions() {
     printf("Successfully loaded %d questions from file.\n", totalQuestions);
 }
 
-// Select difficulty level
 int selectDifficulty() {
     int choice;
     printf("\n============================================\n");
@@ -230,7 +213,6 @@ int selectDifficulty() {
     return 0;
 }
 
-// Ask a single question
 void askQuestion(struct Question q, int *score, int questionNum) {
     char userAnswer;
 
@@ -245,7 +227,6 @@ void askQuestion(struct Question q, int *score, int questionNum) {
     scanf(" %c", &userAnswer);
     getchar();
 
-    // Convert to uppercase
     if (userAnswer >= 'a' && userAnswer <= 'd') {
         userAnswer -= 32;
     }
@@ -258,13 +239,11 @@ void askQuestion(struct Question q, int *score, int questionNum) {
     }
 }
 
-// Calculate final score with difficulty multiplier
 int calculateScore(int correct, int total, int difficulty) {
     int baseScore = (correct * 100) / total;
-    return baseScore * difficulty; // Multiply by difficulty level
+    return baseScore * difficulty;
 }
 
-// Save high score to file
 void saveHighScore(int score) {
     FILE *fp = fopen(HIGHSCORE_FILE, "w");
     if (fp == NULL) {
@@ -276,7 +255,6 @@ void saveHighScore(int score) {
     printf("High score saved successfully!\n");
 }
 
-// Load high score from file
 void loadHighScore() {
     FILE *fp = fopen(HIGHSCORE_FILE, "r");
     if (fp == NULL) {
@@ -287,7 +265,6 @@ void loadHighScore() {
     fclose(fp);
 }
 
-// Show final results
 void showResult(int score, int correct, int total, int difficulty) {
     char *difficultyStr;
     switch (difficulty) {
@@ -309,7 +286,6 @@ void showResult(int score, int correct, int total, int difficulty) {
     printf("Current High Score: %d\n", highScore);
     printf("============================================\n");
 
-    // Performance message
     float percentage = (float)correct / total * 100;
     if (percentage == 100) {
         printf("🏆 PERFECT SCORE! Outstanding!\n");
@@ -324,7 +300,6 @@ void showResult(int score, int correct, int total, int difficulty) {
     }
 }
 
-// Shuffle questions using Fisher-Yates algorithm
 void shuffleQuestions(struct Question arr[], int n) {
     for (int i = n - 1; i > 0; i--) {
         int j = rand() % (i + 1);
@@ -334,7 +309,6 @@ void shuffleQuestions(struct Question arr[], int n) {
     }
 }
 
-// Create a sample question file
 void createSampleQuestionFile() {
     FILE *fp = fopen(QUESTION_FILE, "w");
     if (fp == NULL) {
@@ -342,7 +316,6 @@ void createSampleQuestionFile() {
         return;
     }
 
-    // Easy Questions (difficulty = 1)
     fprintf(fp, "What is the size of 'int' in C (on most 32/64-bit systems)?|2 bytes|4 bytes|8 bytes|1 byte|B|1\n");
     fprintf(fp, "Which function is used to print output in C?|scanf()|printf()|cout|print()|B|1\n");
     fprintf(fp, "What is the correct syntax to declare a variable in C?|int x;|variable x;|declare x;|x int;|A|1\n");
@@ -351,7 +324,6 @@ void createSampleQuestionFile() {
     fprintf(fp, "Which operator is used for assignment in C?|==|=|:=|=>|B|1\n");
     fprintf(fp, "What is the index of the first element in a C array?|1|0|-1|Depends on array|B|1\n");
 
-    // Medium Questions (difficulty = 2)
     fprintf(fp, "What is the output of: printf(\"%%d\", 5/2);|2.5|2|3|2.0|B|2\n");
     fprintf(fp, "Which keyword is used to prevent modification of a variable?|static|const|volatile|register|B|2\n");
     fprintf(fp, "What does malloc() return if memory allocation fails?|0|-1|NULL|Error|C|2\n");
@@ -360,7 +332,6 @@ void createSampleQuestionFile() {
     fprintf(fp, "What is the purpose of 'break' in a switch statement?|End program|Exit loop/switch|Skip iteration|None|B|2\n");
     fprintf(fp, "How do you access a structure member using a pointer?|ptr.member|ptr->member|*ptr.member|ptr::member|B|2\n");
 
-    // Hard Questions (difficulty = 3)
     fprintf(fp, "What is the time complexity of binary search?|O(n)|O(log n)|O(n^2)|O(1)|B|3\n");
     fprintf(fp, "What does the 'volatile' keyword indicate?|Variable is constant|Variable may change unexpectedly|Variable is static|Variable is global|B|3\n");
     fprintf(fp, "What is the output of: printf(\"%%d\", sizeof(char));|0|1|2|4|B|3\n");
