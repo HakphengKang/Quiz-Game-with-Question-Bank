@@ -1,21 +1,20 @@
-What is the size of 'int' in C (on most 32/64-bit systems)?|2 bytes|4 bytes|8 bytes|1 byte|B|1
-Which function is used to print output in C?|scanf()|printf()|cout|print()|B|1
-What is the correct syntax to declare a variable in C?|int x;|variable x;|declare x;|x int;|A|1
-Which header file is needed for printf()?|stdlib.h|string.h|stdio.h|math.h|C|1
-What does '%d' format specifier represent?|Float|Character|Integer|String|C|1
-Which operator is used for assignment in C?|==|=|:=|=>|B|1
-What is the index of the first element in a C array?|1|0|-1|Depends on array|B|1
-What is the output of: printf("%d", 5/2);|2.5|2|3|2.0|B|2
-Which keyword is used to prevent modification of a variable?|static|const|volatile|register|B|2
-What does malloc() return if memory allocation fails?|0|-1|NULL|Error|C|2
-What is a dangling pointer?|Pointer to NULL|Pointer to freed memory|Uninitialized pointer|Void pointer|B|2
-Which sorting algorithm has O(n log n) average case?|Bubble Sort|Selection Sort|Quick Sort|Insertion Sort|C|2
-What is the purpose of 'break' in a switch statement?|End program|Exit loop/switch|Skip iteration|None|B|2
-How do you access a structure member using a pointer?|ptr.member|ptr->member|*ptr.member|ptr::member|B|2
-What is the time complexity of binary search?|O(n)|O(log n)|O(n^2)|O(1)|B|3
-What does the 'volatile' keyword indicate?|Variable is constant|Variable may change unexpectedly|Variable is static|Variable is global|B|3
-What is the output of: printf("%d", sizeof(char));|0|1|2|4|B|3
-In C, what is a function pointer?|Pointer returned by function|Pointer to a function|Function that returns pointer|None|B|3
-What is the difference between stack and heap memory?|Stack is dynamic, heap is static|Stack is LIFO auto-managed, heap is manually managed|No difference|Stack is slower|B|3
-What happens with: int *p = malloc(0);|Compilation error|Undefined behavior or valid unique pointer|Returns NULL always|Segmentation fault|B|3
-What is a memory leak?|Accessing freed memory|Allocated memory never freed|Buffer overflow|Stack overflow|B|3
+What is the capital city of Cambodia?|Siem Reap|Battambang|Phnom Penh|Kampot|C|1
+Which planet is known as the Red Planet?|Venus|Mars|Jupiter|Mercury|B|1
+How many days are there in a week?|5|6|7|8|C|1
+Which animal is known as the King of the Jungle?|Tiger|Elephant|Lion|Bear|C|1
+What is the largest ocean on Earth?|Atlantic Ocean|Indian Ocean|Arctic Ocean|Pacific Ocean|D|1
+Which gas do plants absorb from the air?|Oxygen|Nitrogen|Carbon Dioxide|Hydrogen|C|1
+How many continents are there on Earth?|5|6|7|8|C|1
+Which language is primarily used to create web pages?|HTML|Python|Java|C|A|1
+What is the boiling point of water at sea level?|50°C|75°C|100°C|150°C|C|1
+Which country is famous for the Eiffel Tower?|Italy|Germany|France|Spain|C|1
+Which element has the chemical symbol Au?|Silver|Gold|Aluminum|Argon|B|3
+Who developed the theory of relativity?|Isaac Newton|Nikola Tesla|Albert Einstein|Galileo Galilei|C|3
+Which country has the largest land area in the world?|China|Canada|United States|Russia|D|3
+What is the smallest unit of life?|Tissue|Organ|Cell|Molecule|C|3
+Which layer of the Earth lies directly beneath the crust?|Core|Mantle|Inner Core|Lithosphere|B|3
+Which famous ship sank on its maiden voyage in 1912?|Lusitania|Britannic|Titanic|Bismarck|C|3
+What is the value of pi rounded to two decimal places?|3.12|3.14|3.16|3.18|B|3
+Which scientist discovered penicillin?|Louis Pasteur|Alexander Fleming|Marie Curie|Robert Koch|B|3
+Which planet has the most moons currently known?|Jupiter|Saturn|Uranus|Neptune|B|3
+In computing, what does CPU stand for?|Central Process Unit|Computer Processing Unit|Central Processing Unit|Core Processing Utility|C|3
