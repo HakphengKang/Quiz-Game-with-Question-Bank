@@ -1,4 +1,8 @@
-What is the size of 'int' in C (on most 32/64-bit systems)?|2 bytes|4 bytes|8 bytes|1 byte|B|1
+What is the size of 'int' in C (on most 32/64-bit systems)?
+A.2 bytes 
+B.4 bytes 
+C.8 bytes 
+D.1 byte
 Which function is used to print output in C?|scanf()|printf()|cout|print()|B|1
 What is the correct syntax to declare a variable in C?|int x;|variable x;|declare x;|x int;|A|1
 Which header file is needed for printf()?|stdlib.h|string.h|stdio.h|math.h|C|1
