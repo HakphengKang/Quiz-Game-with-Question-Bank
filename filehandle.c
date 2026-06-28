@@ -20,6 +20,20 @@ void viewQuestions(){
     }
     fclose(fp);
 }
+void viewScoreboard(){
+    FILE *fp=NULL;
+    fp = fopen("scoreboard.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    char questionAns[256];
+    while(!feof(fp)){
+        fgets(questionAns, sizeof(questionAns),fp);
+        printf("%s", questionAns);
+    }
+    fclose(fp);
+}
  void loadQuestions(int questions){
     FILE *fp=NULL;
     fp = fopen("questions.txt", "r");
@@ -94,15 +108,16 @@ void saveScore(char arr[], int score){
     fclose(fp);
     fp = fopen("scoreboard.txt", "w+");
     for(int i=0; i < count;i++){
-        fprintf(fp, "%s %d\n", p[i].name, p[i].score);
+        fprintf(fp, "%d.%s %d\n", i+1,p[i].name, p[i].score);
         fflush(fp); 
     }
     fclose(fp);
+    viewScoreboard();
 }
 int main(){
     char arr[50];
     int score;
-    printf("enter: ");
-    scanf("%s %d", arr, &score);
-    saveScore(arr, score );
+    printf("enter ;");
+    scanf("%s %d", arr,&score );
+    saveScore(arr, score);
 }

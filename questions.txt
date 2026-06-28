@@ -39,10 +39,10 @@ B. Python
 C. Java
 D. C
 9. What is the boiling point of water at sea level?
-A. 50°C
-B. 75°C
-C. 100°C 
-D. 150°C
+A. 50 Celcius
+B. 75 Celcius
+C. 100 Celcius
+D. 150 Celcius
 10. Which country is famous for the Eiffel Tower?
 A. Italy
 B. Germany
