@@ -1,7 +1,8 @@
 gili 100
 gib 100
 dl 100
-dl 90
+ada 91
 lidi 90
+dl 90
 libi 80
 GO 70

@@ -1,25 +1,50 @@
-What is the size of 'int' in C (on most 32/64-bit systems)?
-A.2 bytes 
-B.4 bytes 
-C.8 bytes 
-D.1 byte
-Which function is used to print output in C?|scanf()|printf()|cout|print()|B|1
-What is the correct syntax to declare a variable in C?|int x;|variable x;|declare x;|x int;|A|1
-Which header file is needed for printf()?|stdlib.h|string.h|stdio.h|math.h|C|1
-What does '%d' format specifier represent?|Float|Character|Integer|String|C|1
-Which operator is used for assignment in C?|==|=|:=|=>|B|1
-What is the index of the first element in a C array?|1|0|-1|Depends on array|B|1
-What is the output of: printf("%d", 5/2);|2.5|2|3|2.0|B|2
-Which keyword is used to prevent modification of a variable?|static|const|volatile|register|B|2
-What does malloc() return if memory allocation fails?|0|-1|NULL|Error|C|2
-What is a dangling pointer?|Pointer to NULL|Pointer to freed memory|Uninitialized pointer|Void pointer|B|2
-Which sorting algorithm has O(n log n) average case?|Bubble Sort|Selection Sort|Quick Sort|Insertion Sort|C|2
-What is the purpose of 'break' in a switch statement?|End program|Exit loop/switch|Skip iteration|None|B|2
-How do you access a structure member using a pointer?|ptr.member|ptr->member|*ptr.member|ptr::member|B|2
-What is the time complexity of binary search?|O(n)|O(log n)|O(n^2)|O(1)|B|3
-What does the 'volatile' keyword indicate?|Variable is constant|Variable may change unexpectedly|Variable is static|Variable is global|B|3
-What is the output of: printf("%d", sizeof(char));|0|1|2|4|B|3
-In C, what is a function pointer?|Pointer returned by function|Pointer to a function|Function that returns pointer|None|B|3
-What is the difference between stack and heap memory?|Stack is dynamic, heap is static|Stack is LIFO auto-managed, heap is manually managed|No difference|Stack is slower|B|3
-What happens with: int *p = malloc(0);|Compilation error|Undefined behavior or valid unique pointer|Returns NULL always|Segmentation fault|B|3
-What is a memory leak?|Accessing freed memory|Allocated memory never freed|Buffer overflow|Stack overflow|B|3
+1. What is the capital city of Cambodia?
+A. Siem Reap
+B. Battambang
+C. Phnom Penh 
+D. Kampot
+2. Which planet is known as the Red Planet?
+A. Venus
+B. Mars 
+C. Jupiter
+D. Mercury
+3. How many days are there in a week?
+A. 5
+B. 6
+C. 7 
+D. 8
+4. Which animal is known as the King of the Jungle?
+A. Tiger
+B. Elephant
+C. Lion 
+D. Bear
+5. What is the largest ocean on Earth?
+A. Atlantic Ocean
+B. Indian Ocean
+C. Arctic Ocean
+D. Pacific Ocean
+6. Which gas do plants absorb from the air?
+A. Oxygen
+B. Nitrogen
+C. Carbon Dioxide 
+D. Hydrogen
+7. How many continents are there on Earth?
+A. 5
+B. 6
+C. 7 
+D. 8
+8. Which language is primarily used to create web pages?
+A. HTML 
+B. Python
+C. Java
+D. C
+9. What is the boiling point of water at sea level?
+A. 50°C
+B. 75°C
+C. 100°C 
+D. 150°C
+10. Which country is famous for the Eiffel Tower?
+A. Italy
+B. Germany
+C. France 
+D. Spain
