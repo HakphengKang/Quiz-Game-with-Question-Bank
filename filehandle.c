@@ -53,6 +53,7 @@ void viewQuestions(){
     fclose(fp);
 }
 void saveScore(char arr[], int score){
+    // writing section
     FILE *fp = NULL;
     fp = fopen("scoreboard.txt", "a");
     if(fp == NULL){
@@ -60,29 +61,48 @@ void saveScore(char arr[], int score){
         exit(1);
     }
     Player p[100];
-    strcpy(p[0].name, arr);
-    p[0].score = score;
-    fprintf(fp,"%s %d\n", p[0].name, p[0].score);
+    
+    fflush(fp);
     fclose(fp);
 
-    /*
-    FILE *fp = NULL;
-    Player p[100];
-    int count;
+    // reading section
+    
+    int count = 0;
     fp = fopen("scoreboard.txt", "r");
     if(fp==NULL){
         printf("error ");
         exit(1);
     }
-    p[count].name = arr[50];
-    p[count].score = score;
-    //reading the file
-    while(fscanf(fp, "%49s %d", p[count].name,p[count].score)== 2){
+    // reading the file
+    rewind(fp);
+    while(fscanf(fp, "%49s %d", p[count].name,&p[count].score)== 2){
         count++;
     }
+    strcpy(p[count].name, arr);
+    p[count].score = score;
+    count++;
+    // rearranging the priority
+    for(int i=0; i < count ; i++){
+        for(int j=i+1;j < count  ; j++){
+            if (p[j].score > p[i].score){
+                Player temp = p[i];
+                p[i] = p[j];
+                p[j] = temp;
+            }
+        }
+    }
     fclose(fp);
-    fp = fopen("scoreboard.txt","a");
-    */
-
-
+    fp = fopen("scoreboard.txt", "w+");
+    for(int i=0; i < count;i++){
+        fprintf(fp, "%s %d\n", p[i].name, p[i].score);
+        fflush(fp); 
+    }
+    fclose(fp);
+}
+int main(){
+    char arr[50];
+    int score;
+    printf("enter: ");
+    scanf("%s %d ", arr, &score);
+    saveScore(arr, score);
 }

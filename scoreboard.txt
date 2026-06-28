@@ -1,2 +1,7 @@
-reach 90
-kdeth 100
+gili 100
+gib 100
+dl 100
+dl 90
+lidi 90
+libi 80
+GO 70
