@@ -99,3 +99,10 @@ void saveScore(char arr[], int score){
     }
     fclose(fp);
 }
+int main(){
+    char arr[50];
+    int score;
+    printf("enter: ");
+    scanf("%s %d", arr, &score);
+    saveScore(arr, score );
+}
