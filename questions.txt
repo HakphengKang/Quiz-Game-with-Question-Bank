@@ -22,5 +22,30 @@ D. Bear
 A. Atlantic Ocean
 B. Indian Ocean
 C. Arctic Ocean
-D. Pacific Ocean 
+D. Pacific Ocean
+6. Which gas do plants absorb from the air?
+A. Oxygen
+B. Nitrogen
+C. Carbon Dioxide 
+D. Hydrogen
+7. How many continents are there on Earth?
+A. 5
+B. 6
+C. 7 
+D. 8
+8. Which language is primarily used to create web pages?
+A. HTML 
+B. Python
+C. Java
+D. C
+9. What is the boiling point of water at sea level?
+A. 50°C
+B. 75°C
+C. 100°C 
+D. 150°C
+10. Which country is famous for the Eiffel Tower?
+A. Italy
+B. Germany
+C. France 
+D. Spain
 
