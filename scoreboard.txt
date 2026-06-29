@@ -1,0 +1,3 @@
+digger 99
+figger 10
+gooner 10
