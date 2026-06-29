@@ -6,6 +6,10 @@ typedef struct{
     char name[50];
     int score;
 }Player;
+typedef struct{
+    char questions[100];
+    char options[100];
+}Questions;
 void viewQuestions(){
     FILE *fp=NULL;
     fp = fopen("questions.txt", "r");
@@ -114,10 +118,24 @@ void saveScore(char arr[], int score){
     fclose(fp);
     viewScoreboard();
 }
+void addQuestions(char questions[],char options[]){
+    FILE *fp=NULL;
+    fp = fopen("questions.txt", "a");
+    if(fp == NULL){
+        printf("error");
+        exit(1);
+    }
+    Questions q;
+    strcpy(q.questions, questions);
+    strcpy(q.options, options);
+    fprintf(fp,"\n%s", q.questions);
+    fprintf(fp,"\n%s", q.options);
+    fclose(fp);
+}
 int main(){
     char arr[50];
-    int score;
+    char score[50];
     printf("enter ;");
-    scanf("%s %d", arr,&score );
-    saveScore(arr, score);
+    scanf("%s %s", arr,score );
+    addQuestions(arr, score);
 }
