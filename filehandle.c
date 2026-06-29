@@ -132,10 +132,43 @@ void addQuestions(char questions[],char options[]){
     fprintf(fp,"\n%s", q.options);
     fclose(fp);
 }
+void DeleteQuestions(int questions){
+    FILE *fp=NULL;
+    fp = fopen("questions.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    int line_bound[] = {1, 6, 11, 16, 21, 26, 31, 36, 41, 46,
+    51, 56, 61, 66, 71, 76, 81, 86, 91, 96,
+    101, 106, 111, 116, 121, 126, 131, 136, 141, 146,
+    151, 156, 161, 166, 171, 176, 181, 186, 191, 196};
+    int line_boundr[] = {0,5, 10, 15, 20, 25, 30, 35, 40, 45, 50,
+    55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+    105, 110, 115, 120, 125, 130, 135, 140, 145, 150,
+    155, 160, 165, 170, 175, 180, 185, 190, 195, 200};
+    int num  = 0;
+    int target = line_boundr[questions];
+    char questionAns[256][256];
+    bool target_line = true;
+    while(!feof(fp)){
+        fgets(questionAns[num],256,fp);
+        num++;
+    }
+    for(int i = line_boundr[questions]; i < num;i++){
+        strcpy(questionAns[i], questionAns[i+5]);
+    }
+    num-=5;
+    fclose(fp);
+    fopen("questions.txt", "w+");
+    for(int i = 0; i < num;i++){
+        fprintf(fp,"%s", questionAns[i] );
+    }
+    fclose(fp);
+}
 int main(){
-    char arr[50];
-    char score[50];
+    int questions;
     printf("enter ;");
-    scanf("%s %s", arr,score );
-    addQuestions(arr, score);
+    scanf("%d", &questions );
+    DeleteQuestions(questions);
 }

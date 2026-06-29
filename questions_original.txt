@@ -1,0 +1,50 @@
+1. What is the capital city of Cambodia?
+A. Siem Reap
+B. Battambang
+C. Phnom Penh 
+D. Kampot
+2. Which planet is known as the Red Planet?
+A. Venus
+B. Mars 
+C. Jupiter
+D. Mercury
+3. How many days are there in a week?
+A. 5
+B. 6
+C. 7 
+D. 8
+4. Which animal is known as the King of the Jungle?
+A. Tiger
+B. Elephant
+C. Lion 
+D. Bear
+5. What is the largest ocean on Earth?
+A. Atlantic Ocean
+B. Indian Ocean
+C. Arctic Ocean
+D. Pacific Ocean
+6. Which gas do plants absorb from the air?
+A. Oxygen
+B. Nitrogen
+C. Carbon Dioxide 
+D. Hydrogen
+7. How many continents are there on Earth?
+A. 5
+B. 6
+C. 7 
+D. 8
+8. Which language is primarily used to create web pages?
+A. HTML 
+B. Python
+C. Java
+D. C
+9. What is the boiling point of water at sea level?
+A. 50 Celcius
+B. 75 Celcius
+C. 100 Celcius
+D. 150 Celcius
+10. Which country is famous for the Eiffel Tower?
+A. Italy
+B. Germany
+C. France 
+D. Spain
