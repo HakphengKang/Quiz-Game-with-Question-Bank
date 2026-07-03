@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include "kdethgay.h"
 typedef struct{
     char name[50];
     int score;
@@ -38,7 +39,7 @@ void viewScoreboard(){
     }
     fclose(fp);
 }
- void loadQuestions(int questions){
+void loadQuestions(int questions){
     FILE *fp=NULL;
     fp = fopen("questions.txt", "r");
     if(fp==NULL){
@@ -165,10 +166,4 @@ void DeleteQuestions(int questions){
         fprintf(fp,"%s", questionAns[i] );
     }
     fclose(fp);
-}
-int main(){
-    int questions;
-    printf("enter ;");
-    scanf("%d", &questions );
-    DeleteQuestions(questions);
 }
