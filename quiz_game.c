@@ -20,17 +20,21 @@ struct Question questionBank[MAX_QUESTIONS];
 int totalQuestions = 0;
 int highScore = 0;
 
-void loadQuestions();
-int selectDifficulty();
+void loadQuestions(void);
+void saveQuestions(void);
+int selectDifficulty(void);
 void askQuestion(struct Question q, int *score, int questionNum);
 int calculateScore(int correct, int total, int difficulty);
 void saveHighScore(int score);
 void showResult(int score, int correct, int total, int difficulty);
 void shuffleQuestions(struct Question arr[], int n);
-void createSampleQuestionFile();
-void loadHighScore();
+void createSampleQuestionFile(void);
+void loadHighScore(void);
+void viewQuestions(void);
+void addQuestion(void);
+void deleteQuestion(void);
 
-int main() {
+int main(void) {
     int choice;
 
     srand(time(NULL));
@@ -56,15 +60,14 @@ int main() {
     }
 
     do {
-        printf("\n============================================\n");
-        printf("              MAIN MENU\n");
-        printf("============================================\n");
+        printf("========== QUIZ SYSTEM ==========\n");
         printf("1. Start Quiz\n");
-        printf("2. View High Score\n");
-        printf("3. View Total Questions Available\n");
-        printf("4. Exit\n");
-        printf("============================================\n");
-        printf("Enter your choice: ");
+        printf("2. View Scoreboard\n");
+        printf("3. Add Question\n");
+        printf("4. Delete Question\n");
+        printf("5. View Questions\n");
+        printf("6. Exit\n");
+        printf("Choose: ");
         scanf("%d", &choice);
         getchar();
 
@@ -121,32 +124,39 @@ int main() {
             case 2:
                 printf("\n============================================\n");
                 printf("Current High Score: %d\n", highScore);
+                printf("Total Questions in Bank: %d\n", totalQuestions);
+                {
+                    int easy = 0, medium = 0, hard = 0;
+                    for (int i = 0; i < totalQuestions; i++) {
+                        if (questionBank[i].difficulty == 1) easy++;
+                        else if (questionBank[i].difficulty == 2) medium++;
+                        else if (questionBank[i].difficulty == 3) hard++;
+                    }
+                    printf("Easy: %d | Medium: %d | Hard: %d\n", easy, medium, hard);
+                }
                 printf("============================================\n");
                 break;
             case 3:
-                printf("\n============================================\n");
-                printf("Total Questions in Bank: %d\n", totalQuestions);
-                int easy = 0, medium = 0, hard = 0;
-                for (int i = 0; i < totalQuestions; i++) {
-                    if (questionBank[i].difficulty == 1) easy++;
-                    else if (questionBank[i].difficulty == 2) medium++;
-                    else if (questionBank[i].difficulty == 3) hard++;
-                }
-                printf("Easy: %d | Medium: %d | Hard: %d\n", easy, medium, hard);
-                printf("============================================\n");
+                addQuestion();
                 break;
             case 4:
+                deleteQuestion();
+                break;
+            case 5:
+                viewQuestions();
+                break;
+            case 6:
                 printf("\nThank you for playing! Goodbye!\n");
                 break;
             default:
                 printf("\nInvalid choice. Please try again.\n");
         }
-    } while (choice != 4);
+    } while (choice != 6);
 
     return 0;
 }
 
-void loadQuestions() {
+void loadQuestions(void) {
     FILE *fp = fopen(QUESTION_FILE, "r");
     if (fp == NULL) {
         printf("Error: Cannot open question file '%s'\n", QUESTION_FILE);
@@ -193,7 +203,28 @@ void loadQuestions() {
     printf("Successfully loaded %d questions from file.\n", totalQuestions);
 }
 
-int selectDifficulty() {
+void saveQuestions(void) {
+    FILE *fp = fopen(QUESTION_FILE, "w");
+    if (fp == NULL) {
+        printf("Error: Cannot save question file.\n");
+        return;
+    }
+
+    for (int i = 0; i < totalQuestions; i++) {
+        fprintf(fp, "%s|%s|%s|%s|%s|%c|%d\n",
+                questionBank[i].question,
+                questionBank[i].options[0],
+                questionBank[i].options[1],
+                questionBank[i].options[2],
+                questionBank[i].options[3],
+                questionBank[i].answer,
+                questionBank[i].difficulty);
+    }
+
+    fclose(fp);
+}
+
+int selectDifficulty(void) {
     int choice;
     printf("\n============================================\n");
     printf("        SELECT DIFFICULTY LEVEL\n");
@@ -255,7 +286,7 @@ void saveHighScore(int score) {
     printf("High score saved successfully!\n");
 }
 
-void loadHighScore() {
+void loadHighScore(void) {
     FILE *fp = fopen(HIGHSCORE_FILE, "r");
     if (fp == NULL) {
         highScore = 0;
@@ -309,37 +340,30 @@ void shuffleQuestions(struct Question arr[], int n) {
     }
 }
 
-void createSampleQuestionFile() {
-    FILE *fp = fopen(QUESTION_FILE, "w");
-    if (fp == NULL) {
-        printf("Error: Cannot create question file.\n");
-        return;
-    }
+void createSampleQuestionFile(void) {
+    totalQuestions = 21;
+    questionBank[0] = (struct Question){"What is the size of 'int' in C (on most 32/64-bit systems)?", {"2 bytes", "4 bytes", "8 bytes", "1 byte"}, 'B', 1};
+    questionBank[1] = (struct Question){"Which function is used to print output in C?", {"scanf()", "printf()", "cout", "print()"}, 'B', 1};
+    questionBank[2] = (struct Question){"What is the correct syntax to declare a variable in C?", {"int x;", "variable x;", "declare x;", "x int;"}, 'A', 1};
+    questionBank[3] = (struct Question){"Which header file is needed for printf()?", {"stdlib.h", "string.h", "stdio.h", "math.h"}, 'C', 1};
+    questionBank[4] = (struct Question){"What does '%%d' format specifier represent?", {"Float", "Character", "Integer", "String"}, 'C', 1};
+    questionBank[5] = (struct Question){"Which operator is used for assignment in C?", {"==", "=", ":=", "=>"}, 'B', 1};
+    questionBank[6] = (struct Question){"What is the index of the first element in a C array?", {"1", "0", "-1", "Depends on array"}, 'B', 1};
+    questionBank[7] = (struct Question){"What is the output of: printf(\"%%d\", 5/2);", {"2.5", "2", "3", "2.0"}, 'B', 2};
+    questionBank[8] = (struct Question){"Which keyword is used to prevent modification of a variable?", {"static", "const", "volatile", "register"}, 'B', 2};
+    questionBank[9] = (struct Question){"What does malloc() return if memory allocation fails?", {"0", "-1", "NULL", "Error"}, 'C', 2};
+    questionBank[10] = (struct Question){"What is a dangling pointer?", {"Pointer to NULL", "Pointer to freed memory", "Uninitialized pointer", "Void pointer"}, 'B', 2};
+    questionBank[11] = (struct Question){"Which sorting algorithm has O(n log n) average case?", {"Bubble Sort", "Selection Sort", "Quick Sort", "Insertion Sort"}, 'C', 2};
+    questionBank[12] = (struct Question){"What is the purpose of 'break' in a switch statement?", {"End program", "Exit loop/switch", "Skip iteration", "None"}, 'B', 2};
+    questionBank[13] = (struct Question){"How do you access a structure member using a pointer?", {"ptr.member", "ptr->member", "*ptr.member", "ptr::member"}, 'B', 2};
+    questionBank[14] = (struct Question){"What is the time complexity of binary search?", {"O(n)", "O(log n)", "O(n^2)", "O(1)"}, 'B', 3};
+    questionBank[15] = (struct Question){"What does the 'volatile' keyword indicate?", {"Variable is constant", "Variable may change unexpectedly", "Variable is static", "Variable is global"}, 'B', 3};
+    questionBank[16] = (struct Question){"What is the output of: printf(\"%%d\", sizeof(char));", {"0", "1", "2", "4"}, 'B', 3};
+    questionBank[17] = (struct Question){"In C, what is a function pointer?", {"Pointer returned by function", "Pointer to a function", "Function that returns pointer", "None"}, 'B', 3};
+    questionBank[18] = (struct Question){"What is the difference between stack and heap memory?", {"Stack is dynamic, heap is static", "Stack is LIFO auto-managed, heap is manually managed", "No difference", "Stack is slower"}, 'B', 3};
+    questionBank[19] = (struct Question){"What happens with: int *p = malloc(0);", {"Compilation error", "Undefined behavior or valid unique pointer", "Returns NULL always", "Segmentation fault"}, 'B', 3};
+    questionBank[20] = (struct Question){"What is a memory leak?", {"Accessing freed memory", "Allocated memory never freed", "Buffer overflow", "Stack overflow"}, 'B', 3};
 
-    fprintf(fp, "What is the size of 'int' in C (on most 32/64-bit systems)?|2 bytes|4 bytes|8 bytes|1 byte|B|1\n");
-    fprintf(fp, "Which function is used to print output in C?|scanf()|printf()|cout|print()|B|1\n");
-    fprintf(fp, "What is the correct syntax to declare a variable in C?|int x;|variable x;|declare x;|x int;|A|1\n");
-    fprintf(fp, "Which header file is needed for printf()?|stdlib.h|string.h|stdio.h|math.h|C|1\n");
-    fprintf(fp, "What does '%%d' format specifier represent?|Float|Character|Integer|String|C|1\n");
-    fprintf(fp, "Which operator is used for assignment in C?|==|=|:=|=>|B|1\n");
-    fprintf(fp, "What is the index of the first element in a C array?|1|0|-1|Depends on array|B|1\n");
-
-    fprintf(fp, "What is the output of: printf(\"%%d\", 5/2);|2.5|2|3|2.0|B|2\n");
-    fprintf(fp, "Which keyword is used to prevent modification of a variable?|static|const|volatile|register|B|2\n");
-    fprintf(fp, "What does malloc() return if memory allocation fails?|0|-1|NULL|Error|C|2\n");
-    fprintf(fp, "What is a dangling pointer?|Pointer to NULL|Pointer to freed memory|Uninitialized pointer|Void pointer|B|2\n");
-    fprintf(fp, "Which sorting algorithm has O(n log n) average case?|Bubble Sort|Selection Sort|Quick Sort|Insertion Sort|C|2\n");
-    fprintf(fp, "What is the purpose of 'break' in a switch statement?|End program|Exit loop/switch|Skip iteration|None|B|2\n");
-    fprintf(fp, "How do you access a structure member using a pointer?|ptr.member|ptr->member|*ptr.member|ptr::member|B|2\n");
-
-    fprintf(fp, "What is the time complexity of binary search?|O(n)|O(log n)|O(n^2)|O(1)|B|3\n");
-    fprintf(fp, "What does the 'volatile' keyword indicate?|Variable is constant|Variable may change unexpectedly|Variable is static|Variable is global|B|3\n");
-    fprintf(fp, "What is the output of: printf(\"%%d\", sizeof(char));|0|1|2|4|B|3\n");
-    fprintf(fp, "In C, what is a function pointer?|Pointer returned by function|Pointer to a function|Function that returns pointer|None|B|3\n");
-    fprintf(fp, "What is the difference between stack and heap memory?|Stack is dynamic, heap is static|Stack is LIFO auto-managed, heap is manually managed|No difference|Stack is slower|B|3\n");
-    fprintf(fp, "What happens with: int *p = malloc(0);|Compilation error|Undefined behavior or valid unique pointer|Returns NULL always|Segmentation fault|B|3\n");
-    fprintf(fp, "What is a memory leak?|Accessing freed memory|Allocated memory never freed|Buffer overflow|Stack overflow|B|3\n");
-
-    fclose(fp);
+    saveQuestions();
     printf("Sample question file created with 21 questions.\n");
 }
