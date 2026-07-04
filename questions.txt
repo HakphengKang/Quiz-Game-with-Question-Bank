@@ -1,49 +1,89 @@
+<<<<<<< HEAD
 What is the capital city of Cambodia?
+=======
+1. What is the capital city of Cambodia?
+>>>>>>> soth
 A. Siem Reap
 B. Battambang
 C. Phnom Penh 
 D. Kampot
+<<<<<<< HEAD
 Which planet is known as the Red Planet?
+=======
+2. Which planet is known as the Red Planet?
+>>>>>>> soth
 A. Venus
 B. Mars 
 C. Jupiter
 D. Mercury
+<<<<<<< HEAD
 How many days are there in a week?
+=======
+3. How many days are there in a week?
+>>>>>>> soth
 A. 5
 B. 6
 C. 7 
 D. 8
+<<<<<<< HEAD
 Which animal is known as the King of the Jungle?
+=======
+4. Which animal is known as the King of the Jungle?
+>>>>>>> soth
 A. Tiger
 B. Elephant
 C. Lion 
 D. Bear
+<<<<<<< HEAD
 What is the largest ocean on Earth?
+=======
+5. What is the largest ocean on Earth?
+>>>>>>> soth
 A. Atlantic Ocean
 B. Indian Ocean
 C. Arctic Ocean
 D. Pacific Ocean
+<<<<<<< HEAD
 Which gas do plants absorb from the air?
+=======
+6. Which gas do plants absorb from the air?
+>>>>>>> soth
 A. Oxygen
 B. Nitrogen
 C. Carbon Dioxide 
 D. Hydrogen
+<<<<<<< HEAD
 How many continents are there on Earth?
+=======
+7. How many continents are there on Earth?
+>>>>>>> soth
 A. 5
 B. 6
 C. 7 
 D. 8
+<<<<<<< HEAD
 Which language is primarily used to create web pages?
+=======
+8. Which language is primarily used to create web pages?
+>>>>>>> soth
 A. HTML 
 B. Python
 C. Java
 D. C
+<<<<<<< HEAD
 What is the boiling point of water at sea level?
+=======
+9. What is the boiling point of water at sea level?
+>>>>>>> soth
 A. 50 Celcius
 B. 75 Celcius
 C. 100 Celcius
 D. 150 Celcius
+<<<<<<< HEAD
 Which country is famous for the Eiffel Tower?
+=======
+10. Which country is famous for the Eiffel Tower?
+>>>>>>> soth
 A. Italy
 B. Germany
 C. France 
