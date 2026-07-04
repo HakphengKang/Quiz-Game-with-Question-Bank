@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "score_calc.h"
+#include <string.h>
 int calScore(){
     static int score=0;
     score++;

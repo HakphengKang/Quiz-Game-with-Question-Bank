@@ -78,6 +78,6 @@ int displayQuestions() {
     }
     return score;
 }
-void displayScore(int score){
-    displayScore(score, 10 ,"dorm");
+int main(){
+    displayScore(10,10,"deth");
 }
