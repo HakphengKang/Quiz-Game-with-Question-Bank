@@ -1,0 +1,50 @@
+Which layer of the OSI model is responsible for routing packets?
+A. Transport Layer
+B. Session Layer
+C. Network Layer
+D. Data Link Layer
+What is the output of the expression 5 % 2 in C?
+A. 2
+B. 2.5
+C. 1
+D. 0
+Which scientist developed the theory of general relativity?
+A. Isaac Newton
+B. Galileo Galilei
+C. Albert Einstein
+D. Nikola Tesla
+What is the hexadecimal equivalent of the decimal number 255?
+A. FE
+B. FF
+C. F0
+D. EF
+Which sorting algorithm has the best average-case time complexity?
+A. Bubble Sort
+B. Selection Sort
+C. Insertion Sort
+D. Merge Sort
+What is the derivative of sin(x)?
+A. -sin(x)
+B. cos(x)
+C. -cos(x)
+D. tan(x)
+In computer memory, what does RAM stand for?
+A. Read Access Memory
+B. Random Allocation Memory
+C. Random Access Memory
+D. Read and Modify Memory
+Which of the following is NOT a fundamental data type in C?
+A. int
+B. float
+C. string
+D. char
+Which data structure is used for implementing recursion?
+A. Queue
+B. Array
+C. Stack
+D. Tree
+Which algorithm technique solves problems by dividing them into smaller subproblems and combining the results?
+A. Greedy Algorithm
+B. Divide and Conquer
+C. Dynamic Programming
+D. Backtracking
