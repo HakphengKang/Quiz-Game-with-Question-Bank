@@ -253,6 +253,34 @@ void addQuestions(char questions[]){
     
     fclose(fp);
 }
+void addMQuestions(char questions[]){
+    FILE *fp=NULL;
+    fp = fopen("mediumQuestions.txt", "a");
+    if(fp == NULL){
+        printf("error");
+        exit(1);
+    }
+    Questions q;
+    strcpy(q.questions, questions);
+    
+    fprintf(fp,"%s", q.questions);
+    
+    fclose(fp);
+}
+void addHQuestions(char questions[]){
+    FILE *fp=NULL;
+    fp = fopen("hardQuestion.txt", "a");
+    if(fp == NULL){
+        printf("error");
+        exit(1);
+    }
+    Questions q;
+    strcpy(q.questions, questions);
+    
+    fprintf(fp,"%s", q.questions);
+    
+    fclose(fp);
+}
 void DeleteQuestions(int questions){
     FILE *fp=NULL;
     fp = fopen("questions.txt", "r");

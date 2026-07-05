@@ -4,11 +4,7 @@
 #include <string.h>
 #include "kdethgay.h"
 #include "addquestiot.h"
-typedef struct{
-    char questions[100];
-    char options[500];
-}Questions;
-void addQuestiot() {
+void addQuestiot(){
     char questions[100];
     char option[100];
     char options[500] = "";
@@ -21,7 +17,7 @@ void addQuestiot() {
     length = strlen(questions);
     if (length == 0 || questions[length - 1] != '\n') {
         printf("invalid or error\n");
-        return 0;
+        
     }
     questions[length - 1] = '\0';
 
@@ -40,4 +36,7 @@ void addQuestiot() {
     }
     strcat(questions, options);
     addQuestions(questions);
+}
+int main(){
+    addQuestiot();
 }
