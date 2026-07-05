@@ -239,7 +239,7 @@ void saveScore(char arr[], int score){
     fclose(fp);
     viewScoreboard();
 }
-void addQuestions(char questions[],char options[]){
+void addQuestions(char questions[]){
     FILE *fp=NULL;
     fp = fopen("questions.txt", "a");
     if(fp == NULL){
@@ -248,9 +248,9 @@ void addQuestions(char questions[],char options[]){
     }
     Questions q;
     strcpy(q.questions, questions);
-    strcpy(q.options, options);
-    fprintf(fp,"\n%s", q.questions);
-    fprintf(fp,"\n%s", q.options);
+    
+    fprintf(fp,"%s", q.questions);
+    
     fclose(fp);
 }
 void DeleteQuestions(int questions){
