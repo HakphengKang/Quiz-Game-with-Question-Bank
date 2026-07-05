@@ -10,5 +10,6 @@
  void viewQuestions();
  void viewHQuestions();
 void viewMQuestions();
-
+void viewHScoreboard();
+void viewMScoreboard()
  #endif

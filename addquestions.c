@@ -28,7 +28,6 @@ void addQuestiot() {
     length = strlen(questions);
     if (length == 0 || questions[length - 1] != '?') {
         printf("invalid or error\n");
-        return 0;
     }
 
     strcpy(options, "\n");
@@ -41,5 +40,4 @@ void addQuestiot() {
     }
     strcat(questions, options);
     addQuestions(questions);
-    return 0;
 }

@@ -2,7 +2,8 @@
 #include <ctype.h>  // For isdigit()
 #include <string.h> 
 #include "kdethgay.h"
-#include "addquestiot.h"
+#include <stdlib.h>
+void loopMenu(void);
 void displayMenu() {
     printf("=== QUIZ SYSTEM ===\n");
     printf("1. Start Quiz\n");
@@ -99,27 +100,12 @@ void handleChoice(int choice) {
             }while(valid!=1);
             break;
 
-        case 2:
-            printf("Viewing Scoreboard...\n");
-            viewScoreboard();
-            loopMenu();
-            break;
-
-        case 3:
-            printf("Adding Question...\n");
-            addQuestiot();
-            loopMenu();
-            break;
-
-        case 4:
-            printf("Deleting Question...\n");
-            loopMenu();
-            break;
-
-        case 5:
+        case 2:{
             int vadid=0;
             int choices;
+            int Pref;
             do {
+                printf("===================SELECTION===================\n");
                 printf("enter the question difficulty you want to view:\n");
                 printf("1. Easy\n");
                 printf("2. Medium\n");
@@ -129,19 +115,93 @@ void handleChoice(int choice) {
 
                 if(choices==1){
                     viewQuestions();
-                    vadid = 1
+                    vadid = 1;
                 }else if (choices ==2){
                     viewMQuestions();
-                    vadid = 1
-                }else if (choice == 3){
+                    vadid = 1;
+                }else if (choices == 3){
                     viewHQuestions();
                     vadid = 1;
                 }else{
-                    vadid = 0
+                    vadid = 0;
                 }
             } while (vadid!=1);
+            int didway=0;
+            do{
+                printf("============SELECTION===========\n");
+                printf("enter 1 if stay, enter 2 if exit\n");
+                scanf("%d", &Pref);
+                
+                if(Pref == 1){
+                    loopMenu();
+                    didway++;
+                }else if (Pref == 2){
+                    exit(1);
+                    didway++;
+                }else{
+                    printf("Please enter only enter the digit 1 or 2\n");
+                }
+
+            }while(didway!=1);
+            break;
+        }
+
+        case 3:
+            printf("Adding Question...\n");
             loopMenu();
             break;
+
+        case 4:
+            printf("Deleting Question...\n");
+            loopMenu();
+            break;
+
+        case 5:{
+
+            int vadid=0;
+            int choices;
+            int Pref;
+            do {
+                printf("===================SELECTION===================\n");
+                printf("enter the question difficulty you want to view:\n");
+                printf("1. Easy\n");
+                printf("2. Medium\n");
+                printf("3. Hard\n");
+                printf("Enter choice: ");
+                scanf("%d", &choices);
+
+                if(choices==1){
+                    viewScoreboard();
+                    vadid = 1;
+                }else if (choices ==2){
+                    viewMScoreboard();
+                    vadid = 1;
+                }else if (choices == 3){
+                    viewHScoreboard();
+                    vadid = 1;
+                }else{
+                    vadid = 0;
+                }
+            } while (vadid!=1);
+            int didway=0;
+            do{
+                printf("============SELECTION===========\n");
+                printf("enter 1 if stay, enter 2 if exit\n");
+                scanf("%d", &Pref);
+                
+                if(Pref == 1){
+                    loopMenu();
+                    didway++;
+                }else if (Pref == 2){
+                    exit(1);
+                    didway++;
+                }else{
+                    printf("Please enter only enter the digit 1 or 2\n");
+                }
+
+            }while(didway!=1);
+            break;
+        }
 
         case 6:
             printf("Exiting...\n");

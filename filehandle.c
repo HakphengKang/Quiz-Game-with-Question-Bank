@@ -67,6 +67,34 @@ void viewScoreboard(){
     }
     fclose(fp);
 }
+void viewHScoreboard(){
+    FILE *fp=NULL;
+    fp = fopen("scoreboardhard.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    char questionAns[256];
+    while(!feof(fp)){
+        fgets(questionAns, sizeof(questionAns),fp);
+        printf("%s", questionAns);
+    }
+    fclose(fp);
+}
+void viewMScoreboard(){
+    FILE *fp=NULL;
+    fp = fopen("scoreboardMedium.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    char questionAns[256];
+    while(!feof(fp)){
+        fgets(questionAns, sizeof(questionAns),fp);
+        printf("%s", questionAns);
+    }
+    fclose(fp);
+}
 void loadLQuestions(int questions){
     FILE *fp=NULL;
     fp = fopen("questions.txt", "r");
