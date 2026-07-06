@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
 #include "kdethgay.h"
 #include "addquestiot.h"
 void addQuestiot(){
@@ -18,8 +19,9 @@ void addQuestiot(){
     if (length == 0 || questions[length - 1] != '\n') {
         printf("invalid or error\n");
         
+    } else {
+        questions[length - 1] = '\0'; 
     }
-    questions[length - 1] = '\0';
 
     length = strlen(questions);
     if (length == 0 || questions[length - 1] != '?') {
@@ -35,8 +37,36 @@ void addQuestiot(){
         strcat(options, line);
     }
     strcat(questions, options);
+    int difficulty;
+
+printf("\nChoose Difficulty\n");
+printf("1. Easy\n");
+printf("2. Medium\n");
+printf("3. Hard\n");
+printf("Choice: ");
+scanf("%d", &difficulty);
+getchar();  // important to clear newline
+
+if(difficulty == 1)
+{
     addQuestions(questions);
+}
+else if(difficulty == 2)
+{
+    addMQuestions(questions);
+}
+else if(difficulty == 3)
+{
+    addHQuestions(questions);
+}
+else
+{
+    printf("Invalid difficulty!\n");
+}
 }
 int main(){
     addQuestiot();
 }
+
+
+

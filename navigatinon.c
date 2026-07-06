@@ -146,10 +146,41 @@ void handleChoice(int choice) {
             break;
         }
 
-        case 3:
-            printf("Adding Question...\n");
-            loopMenu();
-            break;
+        case 3: {
+    int diff = 0;
+    int valid3 = 0;
+    do {
+        printf("===================SELECTION===================\n");
+        printf("Enter the difficulty of the question you want to add:\n");
+        printf("1. Easy\n");
+        printf("2. Medium\n");
+        printf("3. Hard\n");
+        printf("Enter choice: ");
+
+        if (scanf("%d", &diff) != 1) {
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) { }
+            printf("Invalid input! Please enter a number.\n");
+            continue;
+        }
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF) { }  // eat leftover newline
+
+        if (diff == 1) {
+            addQuestiot();
+            valid3 = 1;
+        } else if (diff == 2) {
+            addMediumQuestion();
+            valid3 = 1;
+        } else if (diff == 3) {
+            addHardQuestion();
+            valid3 = 1;
+        } else {
+            printf("Invalid choice! Please enter 1, 2, or 3.\n");
+        }
+    } while (valid3 != 1);
+    break;
+}
 
         case 4:
             printf("Deleting Question...\n");

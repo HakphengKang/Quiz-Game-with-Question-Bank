@@ -6,6 +6,9 @@
  void saveScore(char arr[], int score);
  void addQuestions(char questions[]);
  void DeleteQuestions(int questions);
+ void addQuestions(char questions[]);
+void addMQuestions(char questions[]);
+void addHQuestions(char questions[]);
  void viewScoreboard();
  void viewQuestions();
  void viewHQuestions();
