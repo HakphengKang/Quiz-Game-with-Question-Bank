@@ -49,19 +49,27 @@ void addQuestiot(){
 
     break;      // Valid question
 }
- strcpy(options, "\n");
 
-    for(int i = 0; i < 4; i++)
+char getOption()
+{
+    char option;
+
+    while (1)
     {
-        printf("Enter option %c: ", 'A' + i);
-        fgets(option, sizeof(option), stdin);
+        printf("Enter option (A-D): ");
+        scanf(" %c", &option);
 
-        sprintf(line, "%c. %s", 'A' + i, option);
-        strcat(options, line);
+        option = toupper(option);
+
+        if (option >= 'A' && option <= 'D')
+        {
+            return option;
+        }
+
+        printf("Invalid option! Please enter A, B, C, or D.\n");
     }
-
-    // Combine question and options
-    strcat(questions, options);
+}
+}
 int difficulty;
     while(1)
 {
