@@ -13,7 +13,7 @@ A C programming project that implements a quiz game with a file-based question b
 ## How to Compile and Run
 
 ```bash
-gcc -o quiz_game quiz_game.c
+gcc -o quiz_game quiz_game.c add_deletequestion.c ans_display.c
 ./quiz_game
 ```
 

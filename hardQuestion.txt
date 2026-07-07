@@ -1,0 +1,50 @@
+What is the chemical symbol for Gold?
+A. Ag
+B. Au
+C. Gd
+D. Go
+Which programming language was developed by Dennis Ritchie?
+A. Java
+B. Python
+C. C
+D. C++
+What is the square root of 144?
+A. 10
+B. 11
+C. 12
+D. 13
+Which country has the largest population in the world?
+A. India
+B. United States
+C. China
+D. Indonesia
+Who wrote the play "Romeo and Juliet"?
+A. Charles Dickens
+B. William Shakespeare
+C. Mark Twain
+D. Jane Austen
+What is the capital city of Australia?
+A. Sydney
+B. Melbourne
+C. Perth
+D. Canberra
+Which planet has the most moons in the Solar System?
+A. Jupiter
+B. Saturn
+C. Uranus
+D. Neptune
+What does CPU stand for?
+A. Central Process Unit
+B. Computer Processing Unit
+C. Central Processing Unit
+D. Core Processing Utility
+In which year did World War II end?
+A. 1943
+B. 1944
+C. 1945
+D. 1946
+Which data structure follows the Last In, First Out (LIFO) principle?
+A. Queue
+B. Array
+C. Linked List
+D. Stack
