@@ -5,6 +5,28 @@
 #include <ctype.h>
 #include "kdethgay.h"
 #include "addquestiot.h"
+
+char getOption()
+{
+    char option;
+
+    while (1)
+    {
+        printf("Enter option (A-D): ");
+        scanf(" %c", &option);
+        getchar(); // Remove newline
+
+        option = toupper(option);
+
+        if (option >= 'A' && option <= 'D')
+        {   
+            return option;
+        }
+
+        printf("Invalid input! Please enter A, B, C, or D.\n");
+    }
+}
+
 void addQuestiot(){
     char questions[100];
     char option[100];
@@ -49,27 +71,23 @@ void addQuestiot(){
 
     break;      // Valid question
 }
+ strcpy(options, "\n");
 
-char getOption()
-{
-    char option;
-
-    while (1)
+    for(int i = 0; i < 4; i++)
     {
-        printf("Enter option (A-D): ");
-        scanf(" %c", &option);
+        printf("Enter option %c: ", 'A' + i);
+        fgets(option, sizeof(option), stdin);
 
-        option = toupper(option);
-
-        if (option >= 'A' && option <= 'D')
-        {
-            return option;
-        }
-
-        printf("Invalid option! Please enter A, B, C, or D.\n");
+        sprintf(line, "%c. %s", 'A' + i, option);
+        strcat(options, line);
     }
-}
-}
+     char selectedOption = getOption();
+
+    printf("You selected: %c\n", selectedOption);
+
+
+    // Combine question and options
+    strcat(questions, options);
 int difficulty;
     while(1)
 {
@@ -111,6 +129,5 @@ else
 int main(){
     addQuestiot();
 }
-
 
 
