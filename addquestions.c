@@ -12,40 +12,80 @@ void addQuestiot(){
     char line[120];
     int length;
 
-    printf("Enter ur desire question: ");
+    while(1)
+{
+    printf("Enter your desired question: ");
     fgets(questions, sizeof(questions), stdin);
 
+    // Check if input is too long
     length = strlen(questions);
-    if (length == 0 || questions[length - 1] != '\n') {
-        printf("invalid or error\n");
-        
-    } else {
-        questions[length - 1] = '\0'; 
+
+    if(length == 0 || questions[length - 1] != '\n')
+    {
+        printf("Input is too long! Please try again.\n");
+
+        while(getchar() != '\n');   // Clear remaining input
+        continue;
     }
 
+    // Remove newline
+    questions[length - 1] = '\0';
+
     length = strlen(questions);
-    if (length == 0 || questions[length - 1] != '?') {
-        printf("invalid or error\n");
+
+    // Must end with '?'
+    if(questions[length - 1] != '?')
+    {
+        printf("Question must end with '?'.\n");
+        continue;
     }
 
-    strcpy(options, "\n");
+    // Must have at least 3 characters before '?'
+    if(length < 4)
+    {
+        printf("Question must contain at least 3 characters before '?'.\n");
+        continue;
+    }
 
-    for(int i = 0; i < 4; i++){
-        printf("Enter option %c: ", i + 65);
+    break;      // Valid question
+}
+ strcpy(options, "\n");
+
+    for(int i = 0; i < 4; i++)
+    {
+        printf("Enter option %c: ", 'A' + i);
         fgets(option, sizeof(option), stdin);
-        sprintf(line, "%c. %s", i + 65, option);
+
+        sprintf(line, "%c. %s", 'A' + i, option);
         strcat(options, line);
     }
-    strcat(questions, options);
-    int difficulty;
 
-printf("\nChoose Difficulty\n");
-printf("1. Easy\n");
-printf("2. Medium\n");
-printf("3. Hard\n");
-printf("Choice: ");
-scanf("%d", &difficulty);
-getchar();  // important to clear newline
+    // Combine question and options
+    strcat(questions, options);
+int difficulty;
+    while(1)
+{
+    printf("\nChoose Difficulty\n");
+    printf("1. Easy\n");
+    printf("2. Medium\n");
+    printf("3. Hard\n");
+    printf("Choice: ");
+
+    if(scanf("%d", &difficulty) != 1)
+    {
+        printf("Invalid input! Enter a number.\n");
+
+        while(getchar() != '\n');
+        continue;
+    }
+
+    getchar();
+
+    if(difficulty >= 1 && difficulty <= 3)
+        break;
+
+    printf("Invalid difficulty! Please enter 1, 2, or 3.\n");
+}
 
 if(difficulty == 1)
 {
@@ -55,13 +95,9 @@ else if(difficulty == 2)
 {
     addMQuestions(questions);
 }
-else if(difficulty == 3)
-{
-    addHQuestions(questions);
-}
 else
 {
-    printf("Invalid difficulty!\n");
+    addHQuestions(questions);
 }
 }
 int main(){
