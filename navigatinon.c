@@ -105,7 +105,7 @@ void handleChoice(int choice) {
             int choices;
             int Pref;
             do {
-                printf("===================SELECTION===================\n");
+                printf("\n===================SELECTION===================\n");
                 printf("enter the question difficulty you want to view:\n");
                 printf("1. Easy\n");
                 printf("2. Medium\n");
@@ -128,7 +128,7 @@ void handleChoice(int choice) {
             } while (vadid!=1);
             int didway=0;
             do{
-                printf("============SELECTION===========\n");
+                printf("\n============SELECTION===========\n");
                 printf("enter 1 if stay, enter 2 if exit\n");
                 scanf("%d", &Pref);
                 
@@ -162,7 +162,7 @@ void handleChoice(int choice) {
             int choices;
             int Pref;
             do {
-                printf("===================SELECTION===================\n");
+                printf("\n===================SELECTION===================\n");
                 printf("enter the question difficulty you want to view:\n");
                 printf("1. Easy\n");
                 printf("2. Medium\n");
@@ -185,7 +185,7 @@ void handleChoice(int choice) {
             } while (vadid!=1);
             int didway=0;
             do{
-                printf("============SELECTION===========\n");
+                printf("\n============SELECTION===========\n");
                 printf("enter 1 if stay, enter 2 if exit\n");
                 scanf("%d", &Pref);
                 
