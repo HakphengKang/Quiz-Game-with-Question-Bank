@@ -239,6 +239,102 @@ void saveScore(char arr[], int score){
     fclose(fp);
     viewScoreboard();
 }
+void saveMScore(char arr[], int score){
+    // writing section
+    FILE *fp = NULL;
+    fp = fopen("scoreboardMedium.txt", "a");
+    if(fp == NULL){
+        printf("error");
+        exit(1);
+    }
+    Player p[100];
+    
+    fflush(fp);
+    fclose(fp);
+
+    // reading section
+    
+    int count = 0;
+    fp = fopen("scoreboardMedium.txt", "r");
+    if(fp==NULL){
+        printf("error ");
+        exit(1);
+    }
+    // reading the file
+    rewind(fp);
+    while(fscanf(fp, "%49s %d", p[count].name,&p[count].score)== 2){
+        count++;
+    }
+    strcpy(p[count].name, arr);
+    p[count].score = score;
+    count++;
+    // rearranging the priority
+    for(int i=0; i < count ; i++){
+        for(int j=i+1;j < count  ; j++){
+            if (p[j].score > p[i].score){
+                Player temp = p[i];
+                p[i] = p[j];
+                p[j] = temp;
+            }
+        }
+    }
+    fclose(fp);
+    fp = fopen("scoreboardMedium.txt", "w+");
+    for(int i=0; i < count;i++){
+        fprintf(fp, "%d.%s %d\n", i+1,p[i].name, p[i].score);
+        fflush(fp); 
+    }
+    fclose(fp);
+    viewScoreboard();
+}
+void saveHScore(char arr[], int score){
+    // writing section
+    FILE *fp = NULL;
+    fp = fopen("scoreboardhard.txt", "a");
+    if(fp == NULL){
+        printf("error");
+        exit(1);
+    }
+    Player p[100];
+    
+    fflush(fp);
+    fclose(fp);
+
+    // reading section
+    
+    int count = 0;
+    fp = fopen("scoreboardhard.txt", "r");
+    if(fp==NULL){
+        printf("error ");
+        exit(1);
+    }
+    // reading the file
+    rewind(fp);
+    while(fscanf(fp, "%49s %d", p[count].name,&p[count].score)== 2){
+        count++;
+    }
+    strcpy(p[count].name, arr);
+    p[count].score = score;
+    count++;
+    // rearranging the priority
+    for(int i=0; i < count ; i++){
+        for(int j=i+1;j < count  ; j++){
+            if (p[j].score > p[i].score){
+                Player temp = p[i];
+                p[i] = p[j];
+                p[j] = temp;
+            }
+        }
+    }
+    fclose(fp);
+    fp = fopen("scoreboardhard.txt", "w+");
+    for(int i=0; i < count;i++){
+        fprintf(fp, "%d.%s %d\n", i+1,p[i].name, p[i].score);
+        fflush(fp); 
+    }
+    fclose(fp);
+    viewScoreboard();
+}
 void addQuestions(char questions[]){
     FILE *fp=NULL;
     fp = fopen("questions.txt", "a");
@@ -315,3 +411,195 @@ void DeleteQuestions(int questions){
     }
     fclose(fp);
 }
+int checkHQuestions(){
+    FILE *fp=NULL;
+    fp = fopen("hardQuestion.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    int size = 0;
+    int line_bound[] = {1, 6, 11, 16, 21, 26, 31, 36, 41, 46,
+    51, 56, 61, 66, 71, 76, 81, 86, 91, 96,
+    101, 106, 111, 116, 121, 126, 131, 136, 141, 146,
+    151, 156, 161, 166, 171, 176, 181, 186, 191, 196};
+    int line_boundr[] = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50,
+    55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+    105, 110, 115, 120, 125, 130, 135, 140, 145, 150,
+    155, 160, 165, 170, 175, 180, 185, 190, 195, 200};
+    int num  = 1;
+    char questionAns[256];
+    while(!feof(fp)){
+        fgets(questionAns,256,fp);
+        if(num==5){
+            size++;
+            num = 0;
+        }
+        num++;
+    }
+    return size;
+    fclose(fp);
+}
+int checkMQuestions(){
+    FILE *fp=NULL;
+    fp = fopen("mediumQuestions.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    int size = 0;
+    int line_bound[] = {1, 6, 11, 16, 21, 26, 31, 36, 41, 46,
+    51, 56, 61, 66, 71, 76, 81, 86, 91, 96,
+    101, 106, 111, 116, 121, 126, 131, 136, 141, 146,
+    151, 156, 161, 166, 171, 176, 181, 186, 191, 196};
+    int line_boundr[] = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50,
+    55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+    105, 110, 115, 120, 125, 130, 135, 140, 145, 150,
+    155, 160, 165, 170, 175, 180, 185, 190, 195, 200};
+    int num  = 1;
+    char questionAns[256];
+    while(!feof(fp)){
+        fgets(questionAns,256,fp);
+        if(num==5){
+            size++;
+            num = 0;
+        }
+        num++;
+    }
+    return size;
+    fclose(fp);
+}
+int checkLQuestions(){
+    FILE *fp=NULL;
+    fp = fopen("questions.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    int size = 0;
+    int line_bound[] = {1, 6, 11, 16, 21, 26, 31, 36, 41, 46,
+    51, 56, 61, 66, 71, 76, 81, 86, 91, 96,
+    101, 106, 111, 116, 121, 126, 131, 136, 141, 146,
+    151, 156, 161, 166, 171, 176, 181, 186, 191, 196};
+    int line_boundr[] = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50,
+    55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+    105, 110, 115, 120, 125, 130, 135, 140, 145, 150,
+    155, 160, 165, 170, 175, 180, 185, 190, 195, 200};
+    int num  = 1;
+    char questionAns[256];
+    while(!feof(fp)){
+        fgets(questionAns,256,fp);
+        if(num==5){
+            size++;
+            num = 0;
+        }
+        num++;
+    }
+    return size;
+    fclose(fp);
+}
+void addLCans(char c) {
+    FILE *fp;
+
+    // Append the new character
+    fp = fopen("correctans.txt", "a");
+
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        exit(1);
+    }
+
+    fputc(c, fp);
+    fclose(fp);
+
+    
+}
+void addMCans(char c) {
+    FILE *fp;
+
+    // Append the new character
+    fp = fopen("correctansM.txt", "a");
+
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        exit(1);
+    }
+
+    fputc(c, fp);
+    fclose(fp);
+
+    
+}
+void addHCans(char c) {
+    FILE *fp;
+
+    // Append the new character
+    fp = fopen("correctansH.txt", "a");
+
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        exit(1);
+    }
+
+    fputc(c, fp);
+    fclose(fp);
+
+    
+}
+int checkLCans(char ansCorrect[]){
+    // Read the whole file back into the array
+    FILE *fp = NULL;
+    fp = fopen("correctans.txt", "r");
+
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        exit(1);
+    }
+
+    int count = 0;
+
+    while (fscanf(fp, " %c", &ansCorrect[count]) == 1) {
+        count++;
+    }
+    fclose(fp);
+    return count;
+}
+int checkMCans(char ansCorrect[]){
+    // Read the whole file back into the array
+    FILE *fp = NULL;
+    fp = fopen("correctansM.txt", "r");
+
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        exit(1);
+    }
+
+    int count = 0;
+
+    while (fscanf(fp, " %c", &ansCorrect[count]) == 1) {
+        count++;
+    }
+    fclose(fp);
+    return count;
+}
+int checkHCans(char ansCorrect[]){
+    // Read the whole file back into the array
+    FILE *fp = NULL;
+    fp = fopen("correctansH.txt", "r");
+
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+        exit(1);
+    }
+
+    int count = 0;
+
+    while (fscanf(fp, " %c", &ansCorrect[count]) == 1) {
+        count++;
+    }
+    fclose(fp);
+    return count;
+}
+
+
+

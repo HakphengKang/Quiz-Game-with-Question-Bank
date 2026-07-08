@@ -12,4 +12,15 @@
 void viewMQuestions();
 void viewHScoreboard();
 void viewMScoreboard();
+int checkHQuestions();
+int checkMQuestions();
+int checkLQuestions();
+void saveMScore(char arr[], int score);
+void saveHScore(char arr[], int score);
+void addLCans(char c);
+int checkLCans(char ansCorrect[]);
+void addMCans(char c);
+void addHCans(char c);
+int checkHCans(char ansCorrect[]);
+int checkMCans(char ansCorrect[]);
  #endif
