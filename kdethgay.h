@@ -1,14 +1,13 @@
 #ifndef QUIZ_GAY_DETH_H
 #define QUIZ_GAY_DETH_H
-<<<<<<< HEAD
- void loadQuestions(int questions);
- void displayQuestion(int choice);
-=======
+
  void loadLQuestions(int questions);
  void loadHQuestions(int questions);
  void loadMQuestions(int questions);
  void saveScore(char arr[], int score);
  void addQuestions(char questions[]);
+ void addMQuestions(char questions[]);
+ void addHQuestions(char questions[]);
  void DeleteQuestions(int questions);
  void viewScoreboard();
  void viewQuestions();
@@ -27,4 +26,12 @@ void addMCans(char c);
 void addHCans(char c);
 int checkHCans(char ansCorrect[]);
 int checkMCans(char ansCorrect[]);
+void DeleteLAns(int answers);
+void DeleteMAns(int answers);
+void DeleteHAns(int answers);
+void load1HQuestions();
+void load1MQuestions();
+void load1LQuestions();
+void DeleteMQuestions(int questions);
+void DeleteHQuestions(int questions);
  #endif

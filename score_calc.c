@@ -26,13 +26,4 @@ void displayScore(int currentScore, int totalQuestion, char name[]){
     printf("Accuracy Rate   : %.2f%%\n", percentage);
 
 
-<<<<<<< HEAD
 }
-=======
-}
-
-
-
-
-
->>>>>>> Ra

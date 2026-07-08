@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "kdethgay.h"
+#include "ans_display.h"
 
 int displayQuestions(int difficulty,char c) {
     char userAnswer;
@@ -98,12 +99,4 @@ int displayQuestions(int difficulty,char c) {
 
     }
     return score;
-}
-int main(){
-    char c;
-    int score;
-    printf("main: ");
-    scanf("%c", &c);
-    score = displayQuestions(1,c);
-    printf("%d", score);
 }

@@ -19,8 +19,7 @@ void viewQuestions(){
         exit(1);
     }
     char questionAns[256];
-    while(!feof(fp)){
-        fgets(questionAns, sizeof(questionAns),fp);
+    while(fgets(questionAns, sizeof(questionAns), fp) != NULL){
         printf("%s", questionAns);
     }
     fclose(fp);
@@ -61,9 +60,10 @@ void viewScoreboard(){
         exit(1);
     }
     char questionAns[256];
-    while(!feof(fp)){
-        fgets(questionAns, sizeof(questionAns),fp);
-        printf("%s", questionAns);
+    int score=1;
+    while(fgets(questionAns, sizeof(questionAns), fp) != NULL){
+        printf("%d.%s", score,questionAns);
+        score++;
     }
     fclose(fp);
 }
@@ -75,9 +75,10 @@ void viewHScoreboard(){
         exit(1);
     }
     char questionAns[256];
-    while(!feof(fp)){
-        fgets(questionAns, sizeof(questionAns),fp);
-        printf("%s", questionAns);
+    int score=1;
+    while(fgets(questionAns, sizeof(questionAns), fp) != NULL){
+        printf("%d.%s", score,questionAns);
+        score++;
     }
     fclose(fp);
 }
@@ -89,9 +90,10 @@ void viewMScoreboard(){
         exit(1);
     }
     char questionAns[256];
-    while(!feof(fp)){
-        fgets(questionAns, sizeof(questionAns),fp);
-        printf("%s", questionAns);
+    int score=1;
+    while(fgets(questionAns, sizeof(questionAns), fp) != NULL){
+        printf("%d.%s", score,questionAns);
+        score++;
     }
     fclose(fp);
 }
@@ -231,13 +233,13 @@ void saveScore(char arr[], int score){
         }
     }
     fclose(fp);
-    fp = fopen("scoreboard.txt", "w+");
+    fp = fopen("scoreboard.txt", "w");
     for(int i=0; i < count;i++){
-        fprintf(fp, "%d.%s %d\n", i+1,p[i].name, p[i].score);
+        fprintf(fp, "%s %d\n", p[i].name, p[i].score);
         fflush(fp); 
     }
     fclose(fp);
-    viewScoreboard();
+    
 }
 void saveMScore(char arr[], int score){
     // writing section
@@ -279,13 +281,12 @@ void saveMScore(char arr[], int score){
         }
     }
     fclose(fp);
-    fp = fopen("scoreboardMedium.txt", "w+");
+    fp = fopen("scoreboardMedium.txt", "w");
     for(int i=0; i < count;i++){
-        fprintf(fp, "%d.%s %d\n", i+1,p[i].name, p[i].score);
+        fprintf(fp, "%s %d\n", p[i].name, p[i].score);
         fflush(fp); 
     }
     fclose(fp);
-    viewScoreboard();
 }
 void saveHScore(char arr[], int score){
     // writing section
@@ -327,13 +328,12 @@ void saveHScore(char arr[], int score){
         }
     }
     fclose(fp);
-    fp = fopen("scoreboardhard.txt", "w+");
+    fp = fopen("scoreboardhard.txt", "w");
     for(int i=0; i < count;i++){
-        fprintf(fp, "%d.%s %d\n", i+1,p[i].name, p[i].score);
+        fprintf(fp, "%s %d\n",p[i].name, p[i].score);
         fflush(fp); 
     }
     fclose(fp);
-    viewScoreboard();
 }
 void addQuestions(char questions[]){
     FILE *fp=NULL;
@@ -406,6 +406,74 @@ void DeleteQuestions(int questions){
     num-=5;
     fclose(fp);
     fopen("questions.txt", "w+");
+    for(int i = 0; i < num;i++){
+        fprintf(fp,"%s", questionAns[i] );
+    }
+    fclose(fp);
+}
+void DeleteMQuestions(int questions){
+    FILE *fp=NULL;
+    fp = fopen("mediumQuestions.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    int line_bound[] = {1, 6, 11, 16, 21, 26, 31, 36, 41, 46,
+    51, 56, 61, 66, 71, 76, 81, 86, 91, 96,
+    101, 106, 111, 116, 121, 126, 131, 136, 141, 146,
+    151, 156, 161, 166, 171, 176, 181, 186, 191, 196};
+    int line_boundr[] = {0,5, 10, 15, 20, 25, 30, 35, 40, 45, 50,
+    55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+    105, 110, 115, 120, 125, 130, 135, 140, 145, 150,
+    155, 160, 165, 170, 175, 180, 185, 190, 195, 200};
+    int num  = 0;
+    int target = line_boundr[questions];
+    char questionAns[256][256];
+    bool target_line = true;
+    while(!feof(fp)){
+        fgets(questionAns[num],256,fp);
+        num++;
+    }
+    for(int i = line_boundr[questions]; i < num;i++){
+        strcpy(questionAns[i], questionAns[i+5]);
+    }
+    num-=5;
+    fclose(fp);
+    fopen("mediumQuestions.txt", "w+");
+    for(int i = 0; i < num;i++){
+        fprintf(fp,"%s", questionAns[i] );
+    }
+    fclose(fp);
+}
+void DeleteHQuestions(int questions){
+    FILE *fp=NULL;
+    fp = fopen("hardQuestion.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    int line_bound[] = {1, 6, 11, 16, 21, 26, 31, 36, 41, 46,
+    51, 56, 61, 66, 71, 76, 81, 86, 91, 96,
+    101, 106, 111, 116, 121, 126, 131, 136, 141, 146,
+    151, 156, 161, 166, 171, 176, 181, 186, 191, 196};
+    int line_boundr[] = {0,5, 10, 15, 20, 25, 30, 35, 40, 45, 50,
+    55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+    105, 110, 115, 120, 125, 130, 135, 140, 145, 150,
+    155, 160, 165, 170, 175, 180, 185, 190, 195, 200};
+    int num  = 0;
+    int target = line_boundr[questions];
+    char questionAns[256][256];
+    bool target_line = true;
+    while(!feof(fp)){
+        fgets(questionAns[num],256,fp);
+        num++;
+    }
+    for(int i = line_boundr[questions]; i < num;i++){
+        strcpy(questionAns[i], questionAns[i+5]);
+    }
+    num-=5;
+    fclose(fp);
+    fopen("hardQuestion.txt", "w+");
     for(int i = 0; i < num;i++){
         fprintf(fp,"%s", questionAns[i] );
     }
@@ -600,6 +668,160 @@ int checkHCans(char ansCorrect[]){
     fclose(fp);
     return count;
 }
-
-
+void load1LQuestions(){
+    FILE *fp = NULL;
+    fp = fopen("questions.txt", "r");
+    if (fp == NULL){
+        printf("error");
+        exit(1);
+    }
+    char questions[256];
+    int size = 0;
+    char ansquestions[256][256];
+    int num = 0;
+    while(fgets(questions, 256, fp )!=NULL){
+        if(num == 0){
+            strcpy(ansquestions[size], questions);
+            size++;
+        }
+        num++;
+        if(num==6){
+            strcpy(ansquestions[size], questions);
+            num = 1;
+            size++;
+        }
+    }
+    for(int i =0;i<size; i++){
+        printf("%d.%s", i+1,ansquestions[i] );
+    }
+    fclose(fp);
+}
+void load1MQuestions(){
+    FILE *fp = NULL;
+    fp = fopen("mediumQuestions.txt", "r");
+    if (fp == NULL){
+        printf("error");
+        exit(1);
+    }
+    char questions[256];
+    int size = 0;
+    char ansquestions[256][256];
+    int num = 0;
+    while(fgets(questions, 256, fp )!=NULL){
+        if(num == 0){
+            strcpy(ansquestions[size], questions);
+            size++;
+        }
+        num++;
+        if(num==6){
+            strcpy(ansquestions[size], questions);
+            num = 1;
+            size++;
+        }
+    }
+    for(int i =0;i<size; i++){
+        printf("%d.%s", i+1,ansquestions[i] );
+    }
+    fclose(fp);
+}
+void load1HQuestions(){
+    FILE *fp = NULL;
+    fp = fopen("hardQuestion.txt", "r");
+    if (fp == NULL){
+        printf("error");
+        exit(1);
+    }
+    char questions[256];
+    int size = 0;
+    char ansquestions[256][256];
+    int num = 0;
+    while(fgets(questions, 256, fp )!=NULL){
+        if(num == 0){
+            strcpy(ansquestions[size], questions);
+            size++;
+        }
+        num++;
+        if(num==6){
+            strcpy(ansquestions[size], questions);
+            num = 1;
+            size++;
+        }
+    }
+    for(int i =0;i<size; i++){
+        printf("%d.%s", i+1,ansquestions[i] );
+    }
+    fclose(fp);
+}
+void DeleteLAns(int answers){
+    FILE *fp=NULL;
+    fp = fopen("correctans.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    int num  = 0;
+    char questionAns[256];
+    bool target_line = true;
+    while(fscanf(fp, "%c", &questionAns[num])== 1){
+        num++;
+    }
+    for(int i = answers; i < num;i++){
+        questionAns[i] = questionAns[i+1];
+    }
+    num-=1;
+    fclose(fp);
+    fopen("correctans.txt", "w+");
+    for(int i = 0; i < num;i++){
+        fprintf(fp,"%c", questionAns[i] );
+    }
+    fclose(fp);
+}
+void DeleteMAns(int answers){
+    FILE *fp=NULL;
+    fp = fopen("correctansM.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    int num  = 0;
+    char questionAns[256];
+    bool target_line = true;
+    while(fscanf(fp, "%c", &questionAns[num])== 1){
+        num++;
+    }
+    for(int i = answers; i < num;i++){
+        questionAns[i] = questionAns[i+1];
+    }
+    num-=1;
+    fclose(fp);
+    fopen("correctansM.txt", "w+");
+    for(int i = 0; i < num;i++){
+        fprintf(fp,"%c", questionAns[i] );
+    }
+    fclose(fp);
+}
+void DeleteHAns(int answers){
+    FILE *fp=NULL;
+    fp = fopen("correctansH.txt", "r");
+    if(fp==NULL){
+        printf("File not open");
+        exit(1);
+    }
+    int num  = 0;
+    char questionAns[256];
+    bool target_line = true;
+    while(fscanf(fp, "%c", &questionAns[num])== 1){
+        num++;
+    }
+    for(int i = answers; i < num;i++){
+        questionAns[i] = questionAns[i+1];
+    }
+    num-=1;
+    fclose(fp);
+    fopen("correctansH.txt", "w+");
+    for(int i = 0; i < num;i++){
+        fprintf(fp,"%c", questionAns[i] );
+    }
+    fclose(fp);
+}
 

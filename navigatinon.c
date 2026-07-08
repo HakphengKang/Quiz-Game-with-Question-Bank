@@ -3,6 +3,10 @@
 #include <string.h> 
 #include "kdethgay.h"
 #include <stdlib.h>
+#include "addquestiot.h"
+#include <stdbool.h>
+#include "score_calc.h"
+#include "ans_display.h"
 void loopMenu(void);
 void displayMenu() {
     printf("=== QUIZ SYSTEM ===\n");
@@ -74,31 +78,106 @@ int getchoice(){
 
 void handleChoice(int choice) {
     switch(choice) {
-        case 1: 
+        case 1: {
             int choice;
             int valid = 0;
+            char name[50];
+            int score;
+            int questions;
+            getValidName(name);
             printf("Starting Quiz...\n");
             printf("what do you choose?\n");
             printf("1.High difficulty\n");
             printf("2.Medium difficulty\n");
             printf("3.Low difficulty\n");
             do{
+                int toy;
+                bool correct_choice = false;
                 printf("Enter your choice(1-3): ");
                 scanf("%d", &choice);
                 if(choice >= 1 && choice <= 3){
+                    score = displayQuestions(choice,'0');
                     valid = 1;
-                    if(choice == 1){
-                        printf("You chose High difficulty.\n");
-                    }else if(choice == 2){
-                        printf("You chose Medium difficulty.\n");
-                    }else if(choice == 3){
-                        printf("You chose Low difficulty.\n");
+                    if(choice==1){
+                        questions = checkLQuestions();
+                        displayScore(score,questions,name);
+                        saveScore(name,score);
+                        printf("Do you want to view the scoreboard?\n");
+                        printf("1 to view, 2 to go main menu, 3 to exit\n");
+                        
+                        do{
+                            printf("please choose: ");
+                            scanf("%d", &toy);
+                            if(toy==1){
+                                viewScoreboard();
+                                correct_choice = true;
+                            }else if(toy==2){
+                                loopMenu();
+                                correct_choice = true;
+                            }else if(toy==3){
+                                exit(1);
+                                correct_choice = true;
+                            }else{
+                                printf("invalid choice please choose again!\n");
+                            }
+                        }while(!correct_choice);
+
+                    }else if (choice == 2){
+                        questions = checkMQuestions();
+                        displayScore(score,questions,name);
+                        saveMScore(name,score);
+                        printf("Do you want to view the scoreboard?\n");
+                        printf("1 to view, 2 to go main menu, 3 to exit\n");
+                        
+                        do{
+                            printf("please choose: ");
+                            scanf("%d", &toy);
+                            if(toy==1){
+                                viewMScoreboard();
+                                correct_choice = true;
+                            }else if(toy==2){
+                                loopMenu();
+                                correct_choice = true;
+                            }else if(toy==3){
+                                exit(1);
+                                correct_choice = true;
+                            }else{
+                                printf("invalid choice please choose again!\n");
+                            }
+                        }while(!correct_choice);
+                        
+                    }else{
+                        questions = checkHQuestions();
+                        displayScore(score,questions,name);
+                        saveHScore(name,score);
+                        printf("Do you want to view the scoreboard?\n");
+                        printf("1 to view, 2 to go main menu, 3 to exit\n");
+                        
+                        do{
+                            printf("please choose: ");
+                            scanf("%d", &toy);
+                            if(toy==1){
+                                viewHScoreboard();
+                                correct_choice = true;
+                            }else if(toy==2){
+                                loopMenu();
+                                correct_choice = true;
+                            }else if(toy==3){
+                                exit(1);
+                                correct_choice = true;
+                            }else{
+                                printf("invalid choice please choose again!\n");
+                            }
+                        }while(!correct_choice);
                     }
+                    
                 }else{
                     printf(" Invalid choice! Please enter a number between 1 and 3.\n");
                 }
             }while(valid!=1);
             break;
+
+        }
 
         case 2:{
             int vadid=0;
@@ -106,7 +185,7 @@ void handleChoice(int choice) {
             int Pref;
             do {
                 printf("\n===================SELECTION===================\n");
-                printf("enter the question difficulty you want to view:\n");
+                printf("Enter the question difficulty you want to view:\n");
                 printf("1. Easy\n");
                 printf("2. Medium\n");
                 printf("3. Hard\n");
@@ -124,12 +203,14 @@ void handleChoice(int choice) {
                     vadid = 1;
                 }else{
                     vadid = 0;
+                    printf("\nPlease only input the digit from 1-3\n");
                 }
             } while (vadid!=1);
             int didway=0;
             do{
                 printf("\n============SELECTION===========\n");
-                printf("enter 1 if stay, enter 2 if exit\n");
+                printf("Enter 1 if stay, enter 2 if exit\n");
+                printf("Please choose: ");
                 scanf("%d", &Pref);
                 
                 if(Pref == 1){
@@ -139,22 +220,137 @@ void handleChoice(int choice) {
                     exit(1);
                     didway++;
                 }else{
-                    printf("Please enter only enter the digit 1 or 2\n");
+                    printf("Please only enter the digit 1-2\n");
                 }
 
             }while(didway!=1);
             break;
         }
 
-        case 3:
-            printf("Adding Question...\n");
-            loopMenu();
+        case 3:{
+            int Pref;
+            addQuestiot();
+            int didway=0;
+            do{
+                printf("\n============SELECTION===========\n");
+                printf("Enter 1 to stay, enter 2 to exit\n");
+                printf("Please choose: ");
+                scanf("%d", &Pref);
+                
+                if(Pref == 1){
+                    loopMenu();
+                    didway++;
+                }else if (Pref == 2){
+                    exit(1);
+                    didway++;
+                }else{
+                    printf("Please enter only the digit 1 or 2\n");
+                }
+
+            }while(didway!=1);
             break;
 
-        case 4:
-            printf("Deleting Question...\n");
-            loopMenu();
+        }
+
+        case 4:{
+            int vadid=0;
+            int choices;
+            int Pref;
+            int didway = 0;
+            do {
+                bool correct = false;
+                printf("\n==========================DELETE-SELECTION=======================\n");
+                printf("Enter the question difficulty you want to delete your questions on:\n");
+                printf("1. Easy\n");
+                printf("2. Medium\n");
+                printf("3. Hard\n");
+                printf("Enter choice: ");
+                scanf("%d", &choices);
+
+                if(choices==1){
+                    load1LQuestions();
+                    printf("\nWhat questions do you want to delete?\n");
+                    int size;
+                    int choice;
+                    size = checkLQuestions();
+                    do{
+                        printf("Enter your choice(1-%d): ", size);
+                        scanf("%d", &choice);
+                        if(choice<=size && choice>0 ){
+                            DeleteQuestions(choice-1);
+                            DeleteLAns(choice-1);
+                            printf("Question successfully deleted!");
+                            correct = true;
+                        }else{
+                            correct = false;
+                            printf("Please only input the digit from the viewed questions!\n");
+                        }
+                    }while(!correct);
+                    vadid = 1;
+                }else if (choices ==2){
+                    load1MQuestions();
+                    printf("\nWhat questions do you want to delete?\n");
+                    int size;
+                    int choice;
+                    size = checkMQuestions();
+                    do{
+                        printf("Enter your choice(1-%d): ", size);
+                        scanf("%d", &choice);
+                        if(choice<=size && choice>0 ){
+                            DeleteMQuestions(choice-1);
+                            DeleteMAns(choice-1);
+                            printf("Question successfully deleted!");
+                            correct = true;
+                        }else{
+                            correct = false;
+                            printf("Please only input the digit from the viewed questions!\n");
+                        }
+                    }while(!correct);
+                    vadid = 1;
+                }else if (choices == 3){
+                    load1HQuestions();
+                    printf("\nWhat questions do you want to delete?\n");
+                    int size;
+                    int choice;
+                    size = checkHQuestions();
+                    do{
+                        printf("Enter your choice(1-%d): ", size);
+                        scanf("%d", &choice);
+                        if(choice<=size && choice>0 ){
+                            DeleteHQuestions(choice-1);
+                            DeleteHAns(choice-1);
+                            printf("Question successfully deleted!");
+                            correct = true;
+                        }else{
+                            correct = false;
+                            printf("Please only input the digit from the viewed questions!\n");
+                        }
+                    }while(!correct);
+                    vadid = 1;
+                }else{
+                    vadid = 0;
+                    printf("Please only input the digit from 1-3\n");
+                }
+            } while (vadid!=1);
+            do{
+                printf("\n============SELECTION===========\n");
+                printf("Enter 1 to stay, enter 2 to exit\n");
+                printf("Please choose: ");
+                scanf("%d", &Pref);
+                if(Pref == 1){
+                    loopMenu();
+                    didway++;
+                }else if (Pref == 2){
+                    exit(1);
+                    didway++;
+                }else{
+                    printf("Please enter only the digit 1 or 2\n");
+                }
+
+            }while(didway!=1);
             break;
+
+        }
 
         case 5:{
 
@@ -162,8 +358,8 @@ void handleChoice(int choice) {
             int choices;
             int Pref;
             do {
-                printf("\n===================SELECTION===================\n");
-                printf("enter the question difficulty you want to view:\n");
+                printf("\n===================SCOREBOARD SELECTION=====================\n");
+                printf("enter the question difficulty you want to view your scoreboard\n");
                 printf("1. Easy\n");
                 printf("2. Medium\n");
                 printf("3. Hard\n");
@@ -187,6 +383,7 @@ void handleChoice(int choice) {
             do{
                 printf("\n============SELECTION===========\n");
                 printf("enter 1 if stay, enter 2 if exit\n");
+                printf("Please choose: ");
                 scanf("%d", &Pref);
                 
                 if(Pref == 1){
@@ -212,13 +409,9 @@ void handleChoice(int choice) {
     }
 }
 void loopMenu(){
-    char name[50];
     int choice;
     displayMenu();
     choice = getchoice();
-    getValidName(name);
     handleChoice(choice);
 }
-int main(){
-    handleChoice(5);
-}
+
