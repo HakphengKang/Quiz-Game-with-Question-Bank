@@ -13,8 +13,7 @@ A C programming project that implements a quiz game with a file-based question b
 ## How to Compile and Run
 
 ```bash
-gcc -o quiz_game quiz_game.c add_deletequestion.c ans_display.c
-./quiz_game
+gcc main.c navigatinon.c filehandle.c addquestions.c score_calc.c ans_display.c -o main
 ```
 
 ## File Structure
@@ -28,7 +27,7 @@ gcc -o quiz_game quiz_game.c add_deletequestion.c ans_display.c
 ## Question File Format
 
 ```
-question|optionA|optionB|optionC|optionD|answer|difficulty
+question|optionA|optionB|optionC|optionD|difficulty|Answer
 ```
 
 - **Answer**: A, B, C, or D
@@ -38,6 +37,5 @@ question|optionA|optionB|optionC|optionD|answer|difficulty
 
 - Arrays, Structures, Strings
 - File Handling (read/write)
-- Random number generation
 - Loops and control structures
 - Functions and pointers
