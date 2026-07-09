@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include "kdethgay.h"
+#include <ctype.h>
 typedef struct{
     char name[50];
     int score;
@@ -765,17 +766,21 @@ void DeleteLAns(int answers){
     int num  = 0;
     char questionAns[256];
     bool target_line = true;
-    while(fscanf(fp, "%c", &questionAns[num])== 1){
-        num++;
+    char c;
+    while(fscanf(fp, "%c", &c) == 1){
+        if(!isspace((unsigned char)c)){
+            questionAns[num] = c;
+            num++;
+        }
     }
-    for(int i = answers; i < num;i++){
+    for(int i = answers; i < num-1;i++){
         questionAns[i] = questionAns[i+1];
     }
     num-=1;
     fclose(fp);
-    fopen("correctans.txt", "w+");
+    fp = fopen("correctans.txt", "w+");
     for(int i = 0; i < num;i++){
-        fprintf(fp,"%c", questionAns[i] );
+        fprintf(fp,"%c ", questionAns[i] );
     }
     fclose(fp);
 }
@@ -789,17 +794,21 @@ void DeleteMAns(int answers){
     int num  = 0;
     char questionAns[256];
     bool target_line = true;
-    while(fscanf(fp, "%c", &questionAns[num])== 1){
-        num++;
+    char c;
+    while(fscanf(fp, "%c", &c) == 1){
+        if(!isspace((unsigned char)c)){
+            questionAns[num] = c;
+            num++;
+        }
     }
     for(int i = answers; i < num;i++){
         questionAns[i] = questionAns[i+1];
     }
     num-=1;
     fclose(fp);
-    fopen("correctansM.txt", "w+");
+    fp = fopen("correctansM.txt", "w+");
     for(int i = 0; i < num;i++){
-        fprintf(fp,"%c", questionAns[i] );
+        fprintf(fp,"%c ", questionAns[i] );
     }
     fclose(fp);
 }
@@ -813,18 +822,21 @@ void DeleteHAns(int answers){
     int num  = 0;
     char questionAns[256];
     bool target_line = true;
-    while(fscanf(fp, "%c", &questionAns[num])== 1){
-        num++;
+    char c;
+    while(fscanf(fp, "%c", &c) == 1){
+        if(!isspace((unsigned char)c)){
+            questionAns[num] = c;
+            num++;
+        }
     }
-    for(int i = answers; i < num;i++){
+    for(int i = answers; i < num-1;i++){
         questionAns[i] = questionAns[i+1];
     }
     num-=1;
     fclose(fp);
-    fopen("correctansH.txt", "w+");
+    fp = fopen("correctansH.txt", "w+");
     for(int i = 0; i < num;i++){
-        fprintf(fp,"%c", questionAns[i] );
+        fprintf(fp,"%c ", questionAns[i] );
     }
     fclose(fp);
 }
-

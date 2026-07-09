@@ -48,8 +48,3 @@ A. Italy
 B. Germany
 C. France 
 D. Spain
-do you love kids?
-A. no
-B. yes
-C. no
-D. yes

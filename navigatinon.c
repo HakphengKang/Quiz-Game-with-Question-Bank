@@ -315,9 +315,6 @@ void handleChoice(int choice) {
                 printf("2. Medium\n");
                 printf("3. Hard\n");
                 printf("Enter choice: ");
-                printf("\n============SELECTION===========\n");
-                printf("Enter 1 if stay, enter 2 if exit\n");
-                printf("Please choose: ");
                 if (scanf("%d", &choices) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF); 
