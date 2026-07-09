@@ -12,7 +12,7 @@ char getOption()
 
     while (1)
     {
-        printf("Enter option (A-D): ");
+        printf("Enter the answer u want to select (A-D): ");
         scanf(" %c", &option);
         getchar(); // Remove newline
 
