@@ -61,6 +61,7 @@ void viewScoreboard(){
     }
     char questionAns[256];
     int score=1;
+    printf("\n===================SCOREBOARD=================\n");
     while(fgets(questionAns, sizeof(questionAns), fp) != NULL){
         printf("%d.%s", score,questionAns);
         score++;
@@ -76,6 +77,7 @@ void viewHScoreboard(){
     }
     char questionAns[256];
     int score=1;
+    printf("\n===================SCOREBOARD=================\n");
     while(fgets(questionAns, sizeof(questionAns), fp) != NULL){
         printf("%d.%s", score,questionAns);
         score++;
@@ -91,6 +93,7 @@ void viewMScoreboard(){
     }
     char questionAns[256];
     int score=1;
+    printf("\n===================SCOREBOARD=================\n");
     while(fgets(questionAns, sizeof(questionAns), fp) != NULL){
         printf("%d.%s", score,questionAns);
         score++;

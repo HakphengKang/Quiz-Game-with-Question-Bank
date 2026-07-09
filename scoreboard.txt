@@ -1,3 +1,6 @@
 dimbo 3
 Deab 2
 dilo 0
+bilbo 0
+hibo 0
+nobo 0
