@@ -14,6 +14,7 @@ A C programming project that implements a quiz game with a file-based question b
 
 ```bash
 gcc main.c navigatinon.c filehandle.c addquestions.c score_calc.c ans_display.c -o main
+.\main.exe
 ```
 
 ## File Structure
