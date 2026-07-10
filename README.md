@@ -28,7 +28,13 @@ gcc main.c navigatinon.c filehandle.c addquestions.c score_calc.c ans_display.c 
 ## Question File Format
 
 ```
-question|optionA|optionB|optionC|optionD|difficulty|Answer
+difficulty
+question?
+optionA
+optionB
+optionC
+optionD
+Answer
 ```
 
 - **Answer**: A, B, C, or D
