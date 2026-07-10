@@ -249,6 +249,7 @@ void handleChoice(int choice) {
                 if (scanf("%d", &choices) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF); 
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Invalid choice! Please enter a number from 1 to 3.\n");
                     continue;
                 }
@@ -264,6 +265,7 @@ void handleChoice(int choice) {
                     vadid = 1;
                 }else{
                     vadid = 0;
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("\nPlease only input the digit from 1-3\n");
                 }
             } while (vadid!=1);
@@ -275,6 +277,7 @@ void handleChoice(int choice) {
                 if (scanf("%d", &Pref) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF); 
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Invalid choice! Please enter a number from 1-2.\n");
                     continue;
                 }
@@ -286,6 +289,7 @@ void handleChoice(int choice) {
                     exit(1);
                     didway++;
                 }else{
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Please only enter the digit 1-2\n");
                 }
 
@@ -304,6 +308,7 @@ void handleChoice(int choice) {
                 if (scanf("%d", &Pref) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF); 
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Invalid choice! Please enter a number from 1-2.\n");
                     continue;
                 }
@@ -315,6 +320,7 @@ void handleChoice(int choice) {
                     exit(1);
                     didway++;
                 }else{
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Please enter only the digit 1 or 2\n");
                 }
 
@@ -339,6 +345,7 @@ void handleChoice(int choice) {
                 if (scanf("%d", &choices) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF); 
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Invalid choice! Please enter a number from 1 to 3.\n");
                     continue;
                 }
@@ -354,6 +361,7 @@ void handleChoice(int choice) {
                         if (scanf("%d", &choice) != 1) {
                             int c;
                             while ((c = getchar()) != '\n' && c != EOF); 
+                            printf("\n>>> INVALID INPUT! <<<\n");
                             printf("Invalid choice! Please enter a number between 1 and %d.\n", size);
                             continue;
                         }
@@ -365,6 +373,7 @@ void handleChoice(int choice) {
                             correct = true;
                         }else{
                             correct = false;
+                            printf("\n>>> INVALID INPUT! <<<\n");
                             printf("Please only input the digit from the viewed questions!\n");
                         }
                     }while(!correct);
@@ -380,6 +389,7 @@ void handleChoice(int choice) {
                         if (scanf("%d", &choice) != 1) {
                             int c;
                             while ((c = getchar()) != '\n' && c != EOF); 
+                            printf("\n>>> INVALID INPUT! <<<\n");
                             printf("Invalid choice! Please enter a number between 1 and %d.\n", size);
                             continue;
                         }
@@ -390,6 +400,7 @@ void handleChoice(int choice) {
                             correct = true;
                         }else{
                             correct = false;
+                            printf("\n>>> INVALID INPUT! <<<\n");
                             printf("Please only input the digit from the viewed questions!\n");
                         }
                     }while(!correct);
@@ -405,6 +416,7 @@ void handleChoice(int choice) {
                         if (scanf("%d", &choice) != 1) {
                             int c;
                             while ((c = getchar()) != '\n' && c != EOF); 
+                            printf("\n>>> INVALID INPUT! <<<\n");
                             printf("Invalid choice! Please enter a number between 1 and %d.\n", size);
                             continue;
                         }
@@ -415,12 +427,14 @@ void handleChoice(int choice) {
                             correct = true;
                         }else{
                             correct = false;
+                            printf("\n>>> INVALID INPUT! <<<\n");
                             printf("Please only input the digit from the viewed questions!\n");
                         }
                     }while(!correct);
                     vadid = 1;
                 }else{
                     vadid = 0;
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Please only input the digit from 1-3\n");
                 }
             } while (vadid!=1);
@@ -431,6 +445,7 @@ void handleChoice(int choice) {
                 if (scanf("%d", &Pref) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF); 
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Invalid choice! Please enter a number from 1 to 2.\n");
                     continue;
                 }
@@ -441,6 +456,7 @@ void handleChoice(int choice) {
                     exit(1);
                     didway++;
                 }else{
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Please enter only the digit 1 or 2\n");
                 }
 
@@ -464,6 +480,7 @@ void handleChoice(int choice) {
                 if (scanf("%d", &choices) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF); 
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Invalid choice! Please enter a number from 1 to 3.\n");
                     continue;
                 }
@@ -478,6 +495,8 @@ void handleChoice(int choice) {
                     viewHScoreboard();
                     vadid = 1;
                 }else{
+                    printf("\n>>> INVALID INPUT! <<<\n");
+                    printf("Invalid choice! Please enter a number from 1 to 3.\n");
                     vadid = 0;
                 }
             } while (vadid!=1);
@@ -489,6 +508,7 @@ void handleChoice(int choice) {
                 if (scanf("%d", &Pref) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF); 
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Invalid choice! Please enter a number from 1 to 2.\n");
                     continue;
                 }
@@ -500,6 +520,7 @@ void handleChoice(int choice) {
                     exit(1);
                     didway++;
                 }else{
+                    printf("\n>>> INVALID INPUT! <<<\n");
                     printf("Please enter only enter the digit 1 or 2\n");
                 }
 
