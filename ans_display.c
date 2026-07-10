@@ -2,7 +2,7 @@
 #include "score_calc.h"
 #include <string.h>
 #include <stdbool.h>
-#include "kdethgay.h"
+#include "filehandle.h"
 #include "ans_display.h"
 
 int displayQuestions(int difficulty,char c) {

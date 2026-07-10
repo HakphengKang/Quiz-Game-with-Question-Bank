@@ -1,5 +1,5 @@
-#ifndef QUIZ_GAY_DETH_H
-#define QUIZ_GAY_DETH_H
+#ifndef FILE_HANDLE_H
+#define FILE_HANDLE_H
 
  void loadLQuestions(int questions);
  void loadHQuestions(int questions);
