@@ -19,7 +19,7 @@ gcc main.c navigatinon.c filehandle.c addquestions.c score_calc.c ans_display.c 
 
 ## File Structure
 
-- `quiz_game.c` - Main source code
+- `main.c` - Main source code
 - `questions.txt` - Question bank file
 - `highscore.txt` - Auto-generated high score file
 - `LICENSE` - MIT License
