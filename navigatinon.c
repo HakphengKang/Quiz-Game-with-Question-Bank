@@ -44,8 +44,7 @@ void getValidName(char *name) {
                 hasSpace = 1;
             } else if (isdigit(name[i])) {
                 hasDigit = 1;
-            } else if (!isalpha(name[i]) && name[i] != '-' && name[i] != '\'') {
-                // Check for special characters (allow hyphen and apostrophe)
+            } else if (!isalpha(name[i])) {
                 hasSpecialChar = 1;
             }
         }
@@ -58,7 +57,7 @@ void getValidName(char *name) {
         } else if (hasDigit) {
             printf(" Error: Name cannot contain digits! Please try again.\n\n");
         } else if (hasSpecialChar) {
-            printf(" Error: Name can only contain letters, hyphens, and apostrophes! Please try again.\n\n");
+            printf(" Error: Name can only contain letters! Please try again.\n\n");
         } else {
             valid = 1;  // No errors, exit loop
             printf(" Name accepted!\n\n");
