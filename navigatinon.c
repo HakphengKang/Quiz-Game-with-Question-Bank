@@ -275,9 +275,6 @@ void handleChoice(int choice) {
             int didway=0;
             do{
                 printf("\n============SELECTION===========\n");
-                printf("Enter 1 to stay, enter 2 to exit\n");
-                printf("Please choose: ");
-                printf("\n============SELECTION===========\n");
                 printf("Enter 1 if stay, enter 2 if exit\n");
                 printf("Please choose: ");
                 if (scanf("%d", &Pref) != 1) {
